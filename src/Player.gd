@@ -9,6 +9,12 @@ var axis = Vector2.ZERO
 
 var platforms = []
 
+var target_platform : RigidBody2D
+
+onready var rope_tscn = preload("res://Rope.tscn")
+
+
+
 func _physics_process(delta):
 	motion = Vector2.ZERO
 #	var x = Vector2(0,0)
@@ -23,7 +29,22 @@ func _physics_process(delta):
 	
 	
 	position += motion * delta
-	
+
+func _input(event):
+	if Input.is_action_just_pressed("throw_rope") and target_platform:
+		print("Throw rope")
+		# See if we miss!
+		# get the platform under the mouse
+		
+		
+		# spawn a rope object
+		var rope : Rope = rope_tscn.instance()
+		# set the start platform and end platform
+		rope.source_platform = get_major_platform()
+		rope.target_platform = target_platform
+		# set the offsets for each platform
+		rope.source_offset = position
+		# add child
 	
 func get_major_platform():
 	if platforms.size() > 0:
@@ -44,7 +65,17 @@ func _on_body_exited(body):
 	pass # Replace with function body.
 
 
+func _on_MouseFollower_body_entered(body):
+	if body.is_in_group("platforms"):
+		target_platform = body
+		print("target changed")
 
+
+func _on_MouseFollower_body_exited(body):
+	if body.is_in_group("platforms"):
+		if body == target_platform:
+			target_platform = null
+			print("target lost")
 
 
 
@@ -130,6 +161,10 @@ func get_input_axis() -> Vector2:
 
 func clamp_motion(): # limit the top speed
 	motion = motion.clamped(MAX_SPEED)
+
+
+
+
 
 
 
