@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "DampedSpringJoint2D",
 "class": "Rope",
 "language": "GDScript",
-"path": "res://Rope.gd"
+"path": "res://Scripts/Rope.gd"
 }, {
 "base": "Reference",
 "class": "TopDownPlayerController",
 "language": "GDScript",
-"path": "res://top_down_player_controller.gd"
+"path": "res://Scripts/top_down_player_controller.gd"
 } ]
 _global_script_class_icons={
 "Rope": "",
@@ -27,8 +27,8 @@ _global_script_class_icons={
 [application]
 
 config/name="RealGMTKGameJam"
-run/main_scene="res://Stage.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://Scenes/Stage.tscn"
+config/icon="res://Art/icon.png"
 
 [input]
 
@@ -68,4 +68,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Other/default_env.tres"
