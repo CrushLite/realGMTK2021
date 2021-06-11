@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://platform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PlatformSpawner.gd" type="Script" id=4]
+[ext_resource path="res://PlatformKiller.gd" type="Script" id=5]
+[ext_resource path="res://rope_test.png" type="Texture" id=6]
+[ext_resource path="res://MouseFollower.gd" type="Script" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 986.665, 17.3349, 0, 0, 0, 0, 994.602, 580.862 )
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 643.931 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 31.1006
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 1.0
+
+[node name="Stage" type="Node2D"]
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="platform" parent="Platforms" instance=ExtResource( 3 )]
+position = Vector2( 585.296, 254.416 )
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Platforms/platform"]
+node_a = NodePath("..")
+node_b = NodePath("../../platform2")
+length = 161.0
+rest_length = 150.0
+
+[node name="platform2" parent="Platforms" instance=ExtResource( 3 )]
+position = Vector2( 579.714, 413.956 )
+initial_speed = 0
+
+[node name="PlatformSpawner" type="Path2D" parent="."]
+curve = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]
+position = Vector2( 986.665, 17.3349 )
+rotation = 1.55673
+
+[node name="Sprite" type="Sprite" parent="PlatformSpawner/PathFollow2D"]
+texture = ExtResource( 1 )
+
+[node name="SpawnTimer" type="Timer" parent="PlatformSpawner"]
+autostart = true
+
+[node name="SpawnedPlatforms" type="Node2D" parent="PlatformSpawner"]
+
+[node name="PlatformKiller" type="Area2D" parent="."]
+position = Vector2( 0, 296.985 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformKiller"]
+shape = SubResource( 2 )
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2( 610, 279 )
+script = ExtResource( 2 )
+MAX_SPEED = 300
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 1 )
+
+[node name="Node" type="Node" parent="Player"]
+
+[node name="MouseFollower" type="Area2D" parent="Player/Node"]
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Node/MouseFollower"]
+shape = SubResource( 4 )
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+rotation = -0.261799
+points = PoolVector2Array( 119.83, 113.744, 235.268, 115.691, 336.067, 154.184, 351.828, 208.14, 342.637, 262.375, 273.616, 262.369, 189.607, 226.3, 144.994, 165.866 )
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 6 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[connection signal="timeout" from="PlatformSpawner/SpawnTimer" to="PlatformSpawner" method="_on_SpawnTimer_timeout"]
+[connection signal="body_entered" from="PlatformKiller" to="PlatformKiller" method="_on_PlatformKiller_body_entered"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
+[connection signal="body_exited" from="Player" to="Player" method="_on_body_exited"]
+[connection signal="body_entered" from="Player/Node/MouseFollower" to="Player/Node/MouseFollower" method="_on_MouseFollower_body_entered"]
+[connection signal="body_entered" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_entered"]
+[connection signal="body_exited" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_exited"]
