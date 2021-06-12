@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bank tile.png-9f13812ccb3adb6e5ad539b74488145b.stex"
+path="res://.import/Iceberg-6_0000.png-1836bf55447d0b907e9923a1f0df06a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Bank tile.png"
-dest_files=[ "res://.import/Bank tile.png-9f13812ccb3adb6e5ad539b74488145b.stex" ]
+source_file="res://Art/Icebergs/Iceberg-6_0000.png"
+dest_files=[ "res://.import/Iceberg-6_0000.png-1836bf55447d0b907e9923a1f0df06a4.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false

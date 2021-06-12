@@ -8,7 +8,9 @@ onready var platform_tscns = [
 	preload("res://Scenes/Icebergs/iceberg-2.tscn"),
 	preload("res://Scenes/Icebergs/iceberg-2b.tscn"),
 	preload("res://Scenes/Icebergs/iceberg-3.tscn"),
-	preload("res://Scenes/Icebergs/iceberg-4.tscn")
+	preload("res://Scenes/Icebergs/iceberg-4.tscn"),
+	preload("res://Scenes/Icebergs/iceberg-5.tscn"),
+	preload("res://Scenes/Icebergs/iceberg-6.tscn")
 ]
 
 func _physics_process(delta):

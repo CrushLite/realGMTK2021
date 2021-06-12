@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bank tile.png-9f13812ccb3adb6e5ad539b74488145b.stex"
+path="res://.import/Bank tile 2.png-87eb6bfe0832cfbf959a6d4e11ece028.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Bank tile.png"
-dest_files=[ "res://.import/Bank tile.png-9f13812ccb3adb6e5ad539b74488145b.stex" ]
+source_file="res://Art/Bank tile 2.png"
+dest_files=[ "res://.import/Bank tile 2.png-87eb6bfe0832cfbf959a6d4e11ece028.stex" ]
 
 [params]
 
