@@ -30,6 +30,10 @@ config/name="RealGMTKGameJam"
 run/main_scene="res://Scenes/Stage.tscn"
 config/icon="res://Art/icon.png"
 
+[gui]
+
+theme/custom_font="res://Other/Fonts/font.tres"
+
 [input]
 
 move_right={
