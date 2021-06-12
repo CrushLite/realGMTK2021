@@ -24,7 +24,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10000, 10 )
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=7]
 0/name = "Bank tile.png 0"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -82,10 +82,10 @@ extents = Vector2( 10000, 10 )
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=8]
 radius = 345.429
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=9]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 998.494, 102.667, 0, 0, 0, 0, 993.454, 447.886 )
 }
@@ -154,7 +154,7 @@ position = Vector2( 5000, -107.386 )
 shape = SubResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="Environment"]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 7 )
 cell_size = Vector2( 240, 240 )
 format = 1
 tile_data = PoolIntArray( 65535, 3, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 2, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0 )
@@ -175,6 +175,7 @@ scale = Vector2( 2.956, 3.136 )
 
 [node name="AnimatedSprite" parent="iceberg-1" index="3"]
 scale = Vector2( 2.956, 3.136 )
+frame = 0
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -200,7 +201,7 @@ __meta__ = {
 icebergs = [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 1 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 18 ) ]
 
 [node name="WaterfallShape" type="CollisionShape2D" parent="WaterfallSpawner"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Timer" type="Timer" parent="WaterfallSpawner"]
 wait_time = 1.8
@@ -210,7 +211,7 @@ autostart = true
 
 [node name="PlatformSpawner" type="Path2D" parent="."]
 position = Vector2( 3501.11, 197.297 )
-curve = SubResource( 4 )
+curve = SubResource( 9 )
 script = ExtResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]

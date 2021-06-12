@@ -1,0 +1,228 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "shake"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("artists/Artists2:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -2.0, 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Music/Artists2:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -2.0, 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Music/Music:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -2.0, 2.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Coders/Artists7:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -2.0, 2.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Coders/Artists5:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -2.0, 2.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Coders/Artists6:rect_rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -2.0, 2.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("artists/Artists3:rect_rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -2.0, 2.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("artists/Artists4:rect_rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -2.0, 2.0 ]
+}
+
+[node name="CreditsScreen" type="Control"]
+margin_left = 91.9742
+margin_top = 132.292
+margin_right = 131.974
+margin_bottom = 172.292
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="artists" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artists2" type="Label" parent="artists"]
+margin_right = 218.0
+margin_bottom = 45.0
+rect_rotation = 2.0
+rect_pivot_offset = Vector2( 110, 22 )
+text = "Artists"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artists3" type="Label" parent="artists"]
+margin_left = 283.482
+margin_right = 526.482
+margin_bottom = 45.0
+rect_rotation = 2.0
+rect_pivot_offset = Vector2( 110, 22 )
+text = "Kreksyte"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artists4" type="Label" parent="artists"]
+margin_left = 632.0
+margin_right = 837.0
+margin_bottom = 45.0
+rect_rotation = 2.0
+rect_pivot_offset = Vector2( 110, 22 )
+text = "MrGeko"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coders" type="Control" parent="."]
+margin_top = 80.635
+margin_right = 40.0
+margin_bottom = 120.635
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artists5" type="Label" parent="Coders"]
+margin_left = 287.0
+margin_top = 1.0
+margin_right = 589.0
+margin_bottom = 46.0
+rect_rotation = 2.0
+rect_pivot_offset = Vector2( 144.225, 24.0628 )
+text = "Flamebeard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artists6" type="Label" parent="Coders"]
+margin_left = 635.0
+margin_top = 1.0
+margin_right = 802.0
+margin_bottom = 46.0
+rect_rotation = 2.0
+rect_pivot_offset = Vector2( 83.4872, 22.8029 )
+text = "AlexM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artists7" type="Label" parent="Coders"]
+margin_left = -5.0
+margin_top = 1.0
+margin_right = 181.0
+margin_bottom = 46.0
+rect_rotation = 2.0
+rect_pivot_offset = Vector2( 94.7867, 24.0628 )
+text = "Coders"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Control" parent="."]
+margin_top = 165.05
+margin_right = 40.0
+margin_bottom = 205.05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artists2" type="Label" parent="Music"]
+margin_right = 207.0
+margin_bottom = 45.0
+rect_rotation = 2.0
+rect_pivot_offset = Vector2( 101.126, 22.543 )
+text = "Artists"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Label" parent="Music"]
+margin_left = 279.92
+margin_top = 5.73801
+margin_right = 382.92
+margin_bottom = 51.738
+rect_rotation = 2.0
+rect_pivot_offset = Vector2( 52.9124, 23.5011 )
+text = "Cam"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "shake"
+anims/shake = SubResource( 1 )
