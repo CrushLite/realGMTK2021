@@ -6,14 +6,12 @@ export var SLIPPERY = false    # whether the character slides a bit when changin
 
 var motion = Vector2.ZERO
 var axis = Vector2.ZERO
-
 var platforms = []
-
 var target_platform : RigidBody2D
 var last_thrown_rope_path = null
+var is_throwing = false
 
 onready var rope_base_tscn = preload("res://Testing/rope_anchor_base.tscn")
-
 
 
 func _physics_process(delta):
@@ -28,24 +26,21 @@ func _physics_process(delta):
 	
 	var axis = get_input_axis()
 	motion += axis * MAX_SPEED
-	
-	
 	position += motion * delta
+	set_animations(axis, is_throwing)
 
 func _input(event):
 	if last_thrown_rope_path:
 		var last_rope = get_node_or_null(last_thrown_rope_path)
-		if Input.is_action_just_pressed("pull_rope") and last_rope:
+		if Input.is_action_just_pressed("pull_rope") and last_rope and not is_throwing:
 			last_rope.pull(60)
 			pass
 	
-	
-	
 	var base_platform = get_major_platform()
+	# Throw rope
 	if Input.is_action_just_pressed("throw_rope") and target_platform \
 		and base_platform:
-		
-		print("Throw rope")
+		is_throwing = true
 		# spawn a rope object
 		var rope_base = rope_base_tscn.instance()
 		# move the rope_base to the player and reparent it to the platform
@@ -182,6 +177,22 @@ func get_input_axis() -> Vector2:
 func clamp_motion(): # limit the top speed
 	motion = motion.clamped(MAX_SPEED)
 
+
+func set_animations(axis, is_throwing):
+	if is_throwing == true:
+		$AnimatedSprite.animation = "Yeet"
+	elif axis.x > 0:
+		$AnimatedSprite.animation = "Walk"
+		$AnimatedSprite.flip_h = false
+	elif axis.x < 0:
+		$AnimatedSprite.animation = "Walk"
+		$AnimatedSprite.flip_h = true
+	elif axis.y > 0:
+		$AnimatedSprite.animation = "Walk"
+	elif axis.y < 0:
+		$AnimatedSprite.animation = "Walk"
+	else:
+		$AnimatedSprite.animation = "Idle"
 
 
 
