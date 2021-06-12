@@ -11,7 +11,7 @@ var target_platform : RigidBody2D
 var last_thrown_rope_path = null
 var is_throwing = false
 
-onready var rope_base_tscn = preload("res://Testing/rope_anchor_base.tscn")
+onready var rope_base_tscn = preload("res://Scenes/rope_anchor_base.tscn")
 
 
 func _physics_process(delta):
@@ -32,14 +32,14 @@ func _physics_process(delta):
 func _input(event):
 	if last_thrown_rope_path:
 		var last_rope = get_node_or_null(last_thrown_rope_path)
-		if Input.is_action_just_pressed("pull_rope") and last_rope and not is_throwing:
+		if Input.is_action_just_pressed("pull_rope") and last_rope: # and not is_throwing:
 			last_rope.pull(60)
 			pass
 	
 	var base_platform = get_major_platform()
 	# Throw rope
 	if Input.is_action_just_pressed("throw_rope") and target_platform \
-		and base_platform:
+		and base_platform and not is_throwing:
 		is_throwing = true
 		# spawn a rope object
 		var rope_base = rope_base_tscn.instance()
@@ -59,8 +59,10 @@ func _input(event):
 		last_thrown_rope_path = rope_base.get_path()
 		
 		# Initialize the ropes length
-		rope_base.init()
+		rope_base.launch_rope()
+		rope_base.connect("attached", self, "on_rope_attached")
 	
+
 func get_major_platform():
 	if platforms.size() > 0:
 		return platforms[0]
@@ -195,8 +197,5 @@ func set_animations(axis, is_throwing):
 		$AnimatedSprite.animation = "Idle"
 
 
-
-
-
-
-
+func on_rope_attached():
+	is_throwing = false

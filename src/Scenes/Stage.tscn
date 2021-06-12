@@ -1,16 +1,10 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/platform.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/MouseFollower.gd" type="Script" id=2]
-[ext_resource path="res://Art/Rope.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/PlatformKiller.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/PlatformSpawner.gd" type="Script" id=6]
 [ext_resource path="res://Art/icon.png" type="Texture" id=7]
-[ext_resource path="res://Art/Panic_idle.png" type="Texture" id=8]
-[ext_resource path="res://Art/Panic_move.png" type="Texture" id=9]
-[ext_resource path="res://Art/Panic_yeet.png" type="Texture" id=10]
-[ext_resource path="res://Art/Panic_balance.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -19,100 +13,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 643.931 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 180, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 180, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 360, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 0, 180, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 180, 180, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 180, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 180, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 180, 180, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 180, 0, 180, 180 )
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "Balance",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
-"loop": true,
-"name": "Yeet",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 2.0
-} ]
-
-[sub_resource type="CircleShape2D" id=3]
-radius = 31.1006
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 1.0
 
 [node name="Stage" type="Node2D"]
 
@@ -149,44 +49,8 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformKiller"]
 shape = SubResource( 2 )
 
-[node name="Player" type="Area2D" parent="."]
-position = Vector2( 610, 279 )
-script = ExtResource( 4 )
-MAX_SPEED = 300
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
-position = Vector2( -0.707092, 0 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 7 )
-animation = "Balance"
-playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 3 )
-
-[node name="Node" type="Node" parent="Player"]
-
-[node name="MouseFollower" type="Area2D" parent="Player/Node"]
-script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Node/MouseFollower"]
-shape = SubResource( 4 )
-
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2( -12.7071, -0.957127 )
-rotation = -0.261799
-points = PoolVector2Array( 119.83, 113.744, 235.268, 115.691, 336.067, 154.184, 351.828, 208.14, 335.694, 260.2, 273.616, 262.369, 247.152, 251.007, 189.607, 226.3, 144.994, 165.866 )
-width = 40.0
-default_color = Color( 1, 1, 1, 1 )
-texture = ExtResource( 3 )
-texture_mode = 1
-begin_cap_mode = 2
-end_cap_mode = 2
+[node name="Player" parent="." instance=ExtResource( 12 )]
+position = Vector2( 362.039, 289.914 )
 
 [connection signal="timeout" from="PlatformSpawner/SpawnTimer" to="PlatformSpawner" method="_on_SpawnTimer_timeout"]
 [connection signal="body_entered" from="PlatformKiller" to="PlatformKiller" method="_on_PlatformKiller_body_entered"]
-[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
-[connection signal="body_exited" from="Player" to="Player" method="_on_body_exited"]
-[connection signal="body_entered" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_entered"]
-[connection signal="body_entered" from="Player/Node/MouseFollower" to="Player/Node/MouseFollower" method="_on_MouseFollower_body_entered"]
-[connection signal="body_exited" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_exited"]

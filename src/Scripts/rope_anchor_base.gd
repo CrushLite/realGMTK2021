@@ -2,7 +2,7 @@ extends Position2D
 
 # sets the length of the spring based on the distance 
 #  to the other anchor
-
+signal attached
 export(NodePath) var anchor_target_path
 
 func init():
@@ -40,3 +40,24 @@ func _physics_process(delta):
 #		anchor_target.global_rotation = 0
 	else:
 		queue_free() # the anchor target is dead so we are dead
+
+
+func launch_rope():
+	var anchor_target = get_node_or_null(anchor_target_path)
+	$Tween.interpolate_method(
+			self,
+			"update_point0",
+			$Line2D.points[1],
+			anchor_target.global_position - global_position,
+			0.8,
+			Tween.TRANS_SINE,
+			Tween.EASE_OUT)
+	$Tween.connect("tween_all_completed", self, "on_throw_complete")
+	$Tween.start()
+
+func update_point0(new_pos):
+	$Line2D.set_point_position(1, new_pos)
+
+func on_throw_complete():
+	emit_signal("attached")
+	init()
