@@ -175,7 +175,6 @@ scale = Vector2( 2.956, 3.136 )
 
 [node name="AnimatedSprite" parent="iceberg-1" index="3"]
 scale = Vector2( 2.956, 3.136 )
-frame = 2
 
 [node name="Platforms" type="Node2D" parent="."]
 
