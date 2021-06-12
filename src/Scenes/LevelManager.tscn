@@ -111,12 +111,44 @@ margin_left = 38.0
 margin_top = 27.0
 margin_right = -624.0
 margin_bottom = -300.0
-text = "Up:        w/up
-Down:   s/down
-Right:    d/right
-Left:     a/left
-Throw:  Space
-Pull:       x"
+text = "Move Up:
+Move Down:
+Move Right:
+Move Left:
+Throw Rope:
+Pull Rope:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="controls2" type="Label" parent="GUI/ControlsScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 433.107
+margin_top = 27.0
+margin_right = -44.8933
+margin_bottom = -288.0
+text = "w
+s
+d
+a
+left click
+SPAM Space!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="controls3" type="Label" parent="GUI/ControlsScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 566.68
+margin_top = 27.0
+margin_right = 88.6797
+margin_bottom = -288.0
+text = "up
+down
+right
+left"
 __meta__ = {
 "_edit_use_anchors_": false
 }

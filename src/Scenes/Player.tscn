@@ -240,6 +240,7 @@ position = Vector2( 1.29291, -28.2843 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 21 )
 animation = "Yeet"
+frame = 1
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

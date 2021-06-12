@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Icebergs/iceberg-3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Bank tile.png" type="Texture" id=2]
@@ -13,9 +13,17 @@
 [ext_resource path="res://Scenes/Icebergs/iceberg-1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scripts/Stage.gd" type="Script" id=13]
+[ext_resource path="res://Scenes/WaterfallSpawner.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/Icebergs/iceberg-4.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Icebergs/iceberg-5.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Icebergs/iceberg-2b.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Icebergs/iceberg-6.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10000, 10 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 394.42
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -84,12 +92,29 @@ region_rect = Rect2( 0, 0, 10000, 230 )
 position = Vector2( 5000, -107.386 )
 shape = SubResource( 1 )
 
+[node name="iceberg-1" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4991.21, 445.509 )
+initial_speed = 0
+acceleration = Vector2( 0, 0 )
+
+[node name="CollisionPolygon2D" parent="iceberg-1" index="0"]
+scale = Vector2( 2.956, 3.136 )
+
+[node name="icon" parent="iceberg-1" index="1"]
+scale = Vector2( 2.956, 3.136 )
+
+[node name="Polygon2D" parent="iceberg-1" index="2"]
+scale = Vector2( 2.956, 3.136 )
+
+[node name="AnimatedSprite" parent="iceberg-1" index="3"]
+scale = Vector2( 2.956, 3.136 )
+
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="iceberg-2" parent="Platforms" instance=ExtResource( 9 )]
 position = Vector2( 3993.7, 398.637 )
+linear_velocity = Vector2( 0, 200 )
 angular_velocity = 2.0
-angular_damp = 0.0
 
 [node name="iceberg-3" parent="Platforms" instance=ExtResource( 1 )]
 position = Vector2( 4632.78, 575.225 )
@@ -97,8 +122,27 @@ position = Vector2( 4632.78, 575.225 )
 [node name="iceberg-1" parent="Platforms" instance=ExtResource( 11 )]
 position = Vector2( 4479.74, 326.319 )
 
+[node name="WaterfallSpawner" type="Area2D" parent="."]
+position = Vector2( 4036.56, -181.538 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+icebergs = [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 1 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 18 ) ]
+
+[node name="WaterfallShape" type="CollisionShape2D" parent="WaterfallSpawner"]
+shape = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="WaterfallSpawner"]
+wait_time = 2.6
+autostart = true
+
+[node name="SpawnedIcebergs" type="Node2D" parent="WaterfallSpawner"]
+
 [node name="PlatformSpawner" type="Path2D" parent="."]
-position = Vector2( 3830.52, 178.27 )
+position = Vector2( 3501.11, 197.297 )
 curve = SubResource( 2 )
 script = ExtResource( 6 )
 
@@ -107,10 +151,11 @@ position = Vector2( 998.494, 102.667 )
 rotation = 1.58543
 
 [node name="Sprite" type="Sprite" parent="PlatformSpawner/PathFollow2D"]
+visible = false
 texture = ExtResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="PlatformSpawner"]
-wait_time = 3.0
+wait_time = 4096.0
 autostart = true
 
 [node name="SpawnedPlatforms" type="Node2D" parent="PlatformSpawner"]
@@ -124,7 +169,7 @@ position = Vector2( 20.08, 15.6703 )
 shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 4046.66, 342.809 )
+position = Vector2( 4454.56, 326.16 )
 screen_shake_pull = 0.151
 screen_shake_launch = 0.3
 
@@ -193,5 +238,9 @@ polygon = PoolVector2Array( 0.65625, -0.757813, 0.90625, -0.421875, 1, -0.007812
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlackDeath"]
 anims/zoom = SubResource( 4 )
 
+[connection signal="body_exited" from="WaterfallSpawner" to="WaterfallSpawner" method="_on_WaterfallSpawner_body_exited"]
+[connection signal="timeout" from="WaterfallSpawner/Timer" to="WaterfallSpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="PlatformSpawner/SpawnTimer" to="PlatformSpawner" method="_on_SpawnTimer_timeout"]
 [connection signal="body_entered" from="PlatformKiller" to="PlatformKiller" method="_on_PlatformKiller_body_entered"]
+
+[editable path="iceberg-1"]

@@ -48,7 +48,7 @@ func _physics_process(delta):
 			rotation_offset = major_platform.rotation
 #			print("Changed platforms")
 		var change_in_rotation = rotation_offset - current_major_platform.rotation
-		print(change_in_rotation)
+#		print(change_in_rotation)
 		
 		#do the rotation
 		var target_point: Vector2 = global_position - current_major_platform.global_position
@@ -65,8 +65,10 @@ func _physics_process(delta):
 		emit_signal("drowned")
 		print("Drowned")
 	
+	
 	var axis = get_input_axis()
-	motion += axis * MAX_SPEED
+	if not is_throwing:
+		motion += axis * MAX_SPEED
 	position += motion * delta
 	
 	set_animations(axis, is_throwing)
@@ -116,7 +118,7 @@ func _input(event):
 		rope_base.connect("attached", self, "on_rope_attached")
 		
 		# get rid of old rope
-		if old_rope:
+		if is_instance_valid(old_rope):
 			old_rope.queue_free()
 		old_rope = rope_base
 		
@@ -158,7 +160,9 @@ func _on_MouseFollower_body_exited(body):
 
 
 
-
+func kill_old_rope_if_not_pulling():
+	if not is_pulling and old_rope:
+		old_rope.queue_free()
 
 
 
@@ -242,8 +246,11 @@ func clamp_motion(): # limit the top speed
 
 
 func set_animations(axis, is_throwing):
-	if axis.x > 0 or axis.y > 0:
+	if axis.length() > 0:
 		is_pulling = false
+		if is_instance_valid(old_rope):
+			
+			old_rope.queue_free()
 	
 	if is_drowned:
 		$AnimatedSprite.play("Drown");
