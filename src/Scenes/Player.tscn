@@ -52,47 +52,11 @@ region = Rect2( 360, 0, 180, 180 )
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 7 )
-<<<<<<< Updated upstream
-region = Rect2( 0, 0, 180, 180 )
-=======
 region = Rect2( 0, 180, 180, 180 )
->>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 7 )
-<<<<<<< Updated upstream
-region = Rect2( 180, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 360, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 0, 180, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 180, 180, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 180, 0, 180, 180 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 4
-atlas = ExtResource( 5 )
-=======
 region = Rect2( 180, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=12]
@@ -123,34 +87,21 @@ region = Rect2( 360, 0, 180, 180 )
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 3 )
->>>>>>> Stashed changes
 region = Rect2( 0, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
-<<<<<<< Updated upstream
-atlas = ExtResource( 5 )
-=======
 atlas = ExtResource( 3 )
->>>>>>> Stashed changes
 region = Rect2( 180, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 4
-<<<<<<< Updated upstream
-atlas = ExtResource( 6 )
-=======
 atlas = ExtResource( 4 )
->>>>>>> Stashed changes
 region = Rect2( 0, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=20]
 flags = 4
-<<<<<<< Updated upstream
-atlas = ExtResource( 6 )
-=======
 atlas = ExtResource( 4 )
->>>>>>> Stashed changes
 region = Rect2( 180, 0, 180, 180 )
 
 [sub_resource type="SpriteFrames" id=21]
@@ -165,34 +116,19 @@ animations = [ {
 "name": "Heave",
 "speed": 12.0
 }, {
-<<<<<<< Updated upstream
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
-=======
 "frames": [ SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "Balance",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
->>>>>>> Stashed changes
 "loop": true,
 "name": "Yeet",
 "speed": 12.0
 }, {
-<<<<<<< Updated upstream
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 19 ), SubResource( 20 ) ],
-"loop": true,
-"name": "Balance",
-=======
 "frames": [ SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "Idle",
->>>>>>> Stashed changes
 "speed": 5.0
 } ]
 
@@ -218,11 +154,7 @@ position = Vector2( -0.707092, 0 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 21 )
 animation = "Heave"
-<<<<<<< Updated upstream
-frame = 1
-=======
 frame = 4
->>>>>>> Stashed changes
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
