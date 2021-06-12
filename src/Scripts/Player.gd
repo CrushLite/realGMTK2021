@@ -3,6 +3,8 @@ extends Area2D
 export var MAX_SPEED = 200     # pixels per second I believe
 export var ACCELERATION = 1000 # Accel for both moving and stopping
 export var SLIPPERY = false    # whether the character slides a bit when changing directions
+export var screen_shake_pull = 0.3
+export var screen_shake_launch = 0.3
 
 var motion = Vector2.ZERO
 var axis = Vector2.ZERO
@@ -35,7 +37,9 @@ func _input(event):
 		if Input.is_action_just_pressed("pull_rope") and last_rope: # and not is_throwing:
 			is_pulling = true
 			last_rope.pull(60)
-			pass
+			# screenshake
+			var cam = get_tree().get_nodes_in_group("camera")[0]
+			cam.add_trauma(screen_shake_pull)
 	
 	var base_platform = get_major_platform()
 	# Throw rope
@@ -45,7 +49,8 @@ func _input(event):
 		# spawn a rope object
 		var rope_base = rope_base_tscn.instance()
 		# move the rope_base to the player and reparent it to the platform
-		rope_base.position = Vector2()#global_position - base_platform.global_position
+		rope_base.position = Vector2() #global_position - base_platform.global_position
+		# The above line can only be used if we figure out how to rotate around the center of the platform
 		base_platform.add_child(rope_base)
 		# spawn the target object
 		var target = Position2D.new()
@@ -62,6 +67,11 @@ func _input(event):
 		# Initialize the ropes length
 		rope_base.launch_rope()
 		rope_base.connect("attached", self, "on_rope_attached")
+		
+		
+		# screenshake
+		var cam = get_tree().get_nodes_in_group("camera")[0]
+		cam.add_trauma(screen_shake_launch)
 	
 
 func get_major_platform():

@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Scenes/platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Icebergs/iceberg-3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Bank tile.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/penguin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/camera_shake.gd" type="Script" id=4]
@@ -8,7 +8,9 @@
 [ext_resource path="res://Scripts/PlatformSpawner.gd" type="Script" id=6]
 [ext_resource path="res://Art/icon.png" type="Texture" id=7]
 [ext_resource path="res://Art/Bank tile 2.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Icebergs/iceberg-2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Other/Shaders/02.uv_texture_offset/WaterTextureOffset.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Icebergs/iceberg-1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -16,7 +18,7 @@ extents = Vector2( 10000, 10 )
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 991.511, 89.785, 0, 0, 0, 0, 989.829, 527.051 )
+"points": PoolVector2Array( 0, 0, 0, 0, 998.494, 102.667, 0, 0, 0, 0, 993.454, 447.886 )
 }
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -58,27 +60,38 @@ shape = SubResource( 1 )
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="platform" parent="Platforms" instance=ExtResource( 1 )]
-position = Vector2( 585.296, 254.416 )
+[node name="iceberg-2" parent="Platforms" instance=ExtResource( 9 )]
+position = Vector2( 3993.7, 398.637 )
 
-[node name="platform2" parent="Platforms" instance=ExtResource( 1 )]
-position = Vector2( 579.714, 413.956 )
-initial_speed = 0
+[node name="iceberg-3" parent="Platforms" instance=ExtResource( 1 )]
+position = Vector2( 4632.78, 575.225 )
+
+[node name="iceberg-1" parent="Platforms" instance=ExtResource( 11 )]
+position = Vector2( 4479.74, 326.319 )
 
 [node name="PlatformSpawner" type="Path2D" parent="."]
+<<<<<<< Updated upstream
 position = Vector2( 322.904, 178.27 )
 curve = SubResource( 2 )
+=======
+position = Vector2( 3830.52, 178.27 )
+curve = SubResource( 4 )
+>>>>>>> Stashed changes
 script = ExtResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]
-position = Vector2( 991.511, 89.785 )
-rotation = 1.57464
+position = Vector2( 998.494, 102.667 )
+rotation = 1.58541
 
 [node name="Sprite" type="Sprite" parent="PlatformSpawner/PathFollow2D"]
 texture = ExtResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="PlatformSpawner"]
+<<<<<<< Updated upstream
 wait_time = 2.6
+=======
+wait_time = 3.0
+>>>>>>> Stashed changes
 autostart = true
 
 [node name="SpawnedPlatforms" type="Node2D" parent="PlatformSpawner"]
@@ -91,7 +104,9 @@ script = ExtResource( 5 )
 shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 372.73, 362.968 )
+position = Vector2( 4046.66, 342.809 )
+screen_shake_pull = 0.151
+screen_shake_launch = 0.3
 
 [node name="Penguins" type="Node2D" parent="."]
 
@@ -108,13 +123,49 @@ frame = 0
 
 [node name="penguin4" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 87.4533, 760.17 )
+<<<<<<< Updated upstream
+=======
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="penguin5" parent="Penguins" instance=ExtResource( 3 )]
+position = Vector2( 4225.95, 60.5446 )
+frame = 0
+
+[node name="penguin6" parent="Penguins" instance=ExtResource( 3 )]
+position = Vector2( 4478.21, 726.535 )
+frame = 0
+
+[node name="penguin7" parent="Penguins" instance=ExtResource( 3 )]
+position = Vector2( 4853.25, 57.181 )
+
+[node name="penguin8" parent="Penguins" instance=ExtResource( 3 )]
+position = Vector2( 3418.68, 760.17 )
+frame = 0
+
+[node name="penguin9" parent="Penguins" instance=ExtResource( 3 )]
+position = Vector2( 2895.47, 60.5446 )
+frame = 0
+
+[node name="penguin10" parent="Penguins" instance=ExtResource( 3 )]
+position = Vector2( 3147.74, 726.535 )
+frame = 0
+
+[node name="penguin11" parent="Penguins" instance=ExtResource( 3 )]
+position = Vector2( 3522.78, 57.181 )
+
+[node name="penguin12" parent="Penguins" instance=ExtResource( 3 )]
+position = Vector2( 2088.21, 760.17 )
+frame = 0
+>>>>>>> Stashed changes
+
+[node name="Camera2D" type="Camera2D" parent="." groups=[
+"camera",
+]]
 position = Vector2( 0, 420 )
 current = true
 zoom = Vector2( 1.4, 1.4 )
 script = ExtResource( 4 )
 target = NodePath("../Player")
+max_trauma = 0.44
 only_x = true
 
 [connection signal="timeout" from="PlatformSpawner/SpawnTimer" to="PlatformSpawner" method="_on_SpawnTimer_timeout"]

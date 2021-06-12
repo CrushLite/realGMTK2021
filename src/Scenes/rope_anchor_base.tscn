@@ -5,6 +5,7 @@
 [ext_resource path="res://Art/Rope.png" type="Texture" id=3]
 
 [node name="rope_anchor_base" type="Position2D"]
+z_index = 1
 script = ExtResource( 1 )
 anchor_target_path = NodePath("../../platform2/rope_anchor_target")
 
@@ -28,6 +29,7 @@ texture = ExtResource( 2 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Hook" type="Area2D" parent="."]
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="Hook"]
 scale = Vector2( 0.6, 0.6 )
