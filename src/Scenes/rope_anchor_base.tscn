@@ -21,7 +21,8 @@ texture = ExtResource( 3 )
 texture_mode = 1
 
 [node name="icon" type="Sprite" parent="."]
-scale = Vector2( 0.3, 0.3 )
+rotation = -3.0456
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
