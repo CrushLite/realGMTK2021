@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="RealGMTKGameJam"
-run/main_scene="res://Scenes/Stage.tscn"
+run/main_scene="res://Scenes/LevelManager.tscn"
 config/icon="res://Art/icon.png"
 
 [gui]
