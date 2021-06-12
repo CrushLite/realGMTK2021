@@ -69,9 +69,12 @@ func _physics_process(delta):
 	var axis = get_input_axis()
 	if not is_throwing:
 		motion += axis * MAX_SPEED
+	else:
+		axis = Vector2()
+			
 	position += motion * delta
 	
-	set_animations(axis, is_throwing)
+	set_animations(axis)
 
 func _input(event):
 	if last_thrown_rope_path:
@@ -160,11 +163,6 @@ func _on_MouseFollower_body_exited(body):
 
 
 
-func kill_old_rope_if_not_pulling():
-	if not is_pulling and old_rope:
-		old_rope.queue_free()
-
-
 
 
 
@@ -245,11 +243,11 @@ func clamp_motion(): # limit the top speed
 	motion = motion.clamped(MAX_SPEED)
 
 
-func set_animations(axis, is_throwing):
+func set_animations(axis):
 	if axis.length() > 0:
 		is_pulling = false
+		is_throwing = false
 		if is_instance_valid(old_rope):
-			
 			old_rope.queue_free()
 	
 	if is_drowned:
