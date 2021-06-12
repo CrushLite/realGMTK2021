@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Icebergs/iceberg-3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Bank tile.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Scenes/Icebergs/iceberg-2b.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Icebergs/iceberg-6.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Art/Edge tile.png" type="Texture" id=19]
+[ext_resource path="res://Ice_breeze.ogg" type="AudioStream" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10000, 10 )
@@ -174,6 +175,7 @@ scale = Vector2( 2.956, 3.136 )
 
 [node name="AnimatedSprite" parent="iceberg-1" index="3"]
 scale = Vector2( 2.956, 3.136 )
+frame = 2
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -303,6 +305,11 @@ polygon = PoolVector2Array( 0.65625, -0.757813, 0.90625, -0.421875, 1, -0.007812
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlackDeath"]
 anims/zoom = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+volume_db = -10.0
+autoplay = true
 
 [connection signal="body_exited" from="WaterfallSpawner" to="WaterfallSpawner" method="_on_WaterfallSpawner_body_exited"]
 [connection signal="timeout" from="WaterfallSpawner/Timer" to="WaterfallSpawner" method="_on_Timer_timeout"]
