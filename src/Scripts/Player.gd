@@ -182,7 +182,6 @@ func clamp_motion(): # limit the top speed
 
 
 func set_animations(axis, is_throwing):
-	print(axis)
 	if axis.x > 0 or axis.y > 0:
 		is_pulling = false
 	
