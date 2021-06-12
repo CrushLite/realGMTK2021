@@ -79,6 +79,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="GUI/TitleScreen"]
+visible = false
 margin_left = 392.151
 margin_top = 229.688
 margin_right = 726.151

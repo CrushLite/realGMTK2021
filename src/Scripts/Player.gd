@@ -1,5 +1,7 @@
 extends Area2D
 
+signal drowned
+
 export var MAX_SPEED = 200     # pixels per second I believe
 export var ACCELERATION = 1000 # Accel for both moving and stopping
 export var SLIPPERY = false    # whether the character slides a bit when changing directions
@@ -13,6 +15,8 @@ var target_platform : RigidBody2D
 var last_thrown_rope_path = null
 var is_throwing = false
 var is_pulling = false
+var is_drowned = false
+var is_landed = false # gets true the first time that we appear on a platform
 var old_rope
 
 #Used to calculate the rotation the player feels if the platform shifts underneath
@@ -22,21 +26,27 @@ var rotation_offset = 0
 onready var rope_base_tscn = preload("res://Scenes/rope_anchor_base.tscn")
 
 func _physics_process(delta):
+	if is_drowned: # prvent movement if we've drowned
+		return
+	
 	motion = Vector2.ZERO
 #	var x = Vector2(0,0)
 	var major_platform : RigidBody2D = get_major_platform()
 	if major_platform:
+		if not is_landed: is_landed = true
+		
 		motion += major_platform.linear_velocity
+		
 		# Rotate the player around the platform they are standing on
 		if not current_major_platform: 
 			current_major_platform = major_platform
 			rotation_offset = major_platform.rotation
-			print("rotation offset: ", rotation_offset)
+#			print("rotation offset: ", rotation_offset)
 		if current_major_platform != major_platform:
 			# we changed platforms
 			current_major_platform = major_platform
 			rotation_offset = major_platform.rotation
-			print("Changed platforms")
+#			print("Changed platforms")
 		var change_in_rotation = rotation_offset - current_major_platform.rotation
 		print(change_in_rotation)
 		
@@ -50,9 +60,10 @@ func _physics_process(delta):
 		global_position += Vector2(cos(rotation_around_point), sin(rotation_around_point)) * distance_from_point
 		
 		
-	else:
-#		print("we dead")
-		pass
+	elif is_landed:
+		is_drowned = true
+		emit_signal("drowned")
+		print("Drowned")
 	
 	var axis = get_input_axis()
 	motion += axis * MAX_SPEED
@@ -234,7 +245,9 @@ func set_animations(axis, is_throwing):
 	if axis.x > 0 or axis.y > 0:
 		is_pulling = false
 	
-	if is_throwing == true:
+	if is_drowned:
+		$AnimatedSprite.play("Drown");
+	elif is_throwing == true:
 		$AnimatedSprite.play("Yeet");
 	elif axis.x > 0:
 		$AnimatedSprite.animation = "Walk"
