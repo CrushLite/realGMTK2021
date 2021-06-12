@@ -21,4 +21,5 @@ scale = Vector2( 0.0553493, 0.779029 )
 texture = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+z_as_relative = false
 polygon = PoolVector2Array( -43.584, -47.113, 68.662, -60.0213, 108.509, 72.9903, -8.78775, 97.6844, -87.9212, 56.7146 )

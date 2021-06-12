@@ -7,6 +7,7 @@ export(NodePath) var anchor_target_path
 
 func init():
 	var anchor_target : Position2D = get_node(anchor_target_path)
+
 	print("finding anchor target: ", anchor_target)
 	$rope.length = global_position.distance_to(anchor_target.global_position)
 	$rope.rest_length = $rope.length
@@ -22,6 +23,8 @@ func init():
 	
 	$rope.node_a = get_parent().get_path()
 	$rope.node_b = anchor_target.get_parent().get_path()
+	
+	
 	
 
 func pull(amount):
@@ -57,7 +60,9 @@ func launch_rope():
 
 func update_point0(new_pos):
 	$Line2D.set_point_position(1, new_pos)
+	$Hook.set_position(new_pos)
 
 func on_throw_complete():
+	
 	emit_signal("attached")
 	init()

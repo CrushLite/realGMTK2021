@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/rope_anchor_base.gd" type="Script" id=1]
-[ext_resource path="res://Art/icon.png" type="Texture" id=2]
+[ext_resource path="res://Art/Hook.png" type="Texture" id=2]
 [ext_resource path="res://Art/Rope.png" type="Texture" id=3]
 
 [node name="rope_anchor_base" type="Position2D"]
@@ -25,3 +25,9 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Hook" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Hook"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
