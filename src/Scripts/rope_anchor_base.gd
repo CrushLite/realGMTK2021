@@ -7,6 +7,7 @@ export(NodePath) var anchor_target_path
 
 func init():
 	var anchor_target : Position2D = get_node(anchor_target_path)
+	$Hook.position = anchor_target.global_position
 
 	print("finding anchor target: ", anchor_target)
 	$rope.length = global_position.distance_to(anchor_target.global_position)
@@ -18,6 +19,7 @@ func init():
 #	$rope.global_rotation = 0
 	var ang = $rope.get_angle_to(anchor_target.global_position)
 	$rope.rotate(ang - PI/2)
+	$Hook.rotate(ang- PI/2)
 	print(ang)
 #	$rope.look_at(anchor_target.global_position)
 	
