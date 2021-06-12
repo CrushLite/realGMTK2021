@@ -1,7 +1,7 @@
 extends Path2D
 
 export var speed = 400
-onready var platform_tscn = preload("res://platform.tscn")
+onready var platform_tscn = preload("res://Scenes/platform.tscn")
 
 func _physics_process(delta):
 	$PathFollow2D.offset += speed * delta

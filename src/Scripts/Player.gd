@@ -10,8 +10,9 @@ var axis = Vector2.ZERO
 var platforms = []
 
 var target_platform : RigidBody2D
+var last_thrown_rope_path = null
 
-onready var rope_tscn = preload("res://Rope.tscn")
+onready var rope_base_tscn = preload("res://Testing/rope_anchor_base.tscn")
 
 
 
@@ -22,7 +23,8 @@ func _physics_process(delta):
 	if major_platform:
 		motion += major_platform.linear_velocity
 	else:
-		print("we dead")
+#		print("we dead")
+		pass
 	
 	var axis = get_input_axis()
 	motion += axis * MAX_SPEED
@@ -31,20 +33,38 @@ func _physics_process(delta):
 	position += motion * delta
 
 func _input(event):
-	if Input.is_action_just_pressed("throw_rope") and target_platform:
+	if last_thrown_rope_path:
+		var last_rope = get_node_or_null(last_thrown_rope_path)
+		if Input.is_action_just_pressed("pull_rope") and last_rope:
+			last_rope.pull(60)
+			pass
+	
+	
+	
+	var base_platform = get_major_platform()
+	if Input.is_action_just_pressed("throw_rope") and target_platform \
+		and base_platform:
+		
 		print("Throw rope")
-		# See if we miss!
-		# get the platform under the mouse
-		
-		
 		# spawn a rope object
-		var rope : Rope = rope_tscn.instance()
-		# set the start platform and end platform
-		rope.source_platform = get_major_platform()
-		rope.target_platform = target_platform
-		# set the offsets for each platform
-		rope.source_offset = position
-		# add child
+		var rope_base = rope_base_tscn.instance()
+		# move the rope_base to the player and reparent it to the platform
+		rope_base.position = Vector2()#global_position - base_platform.global_position
+		base_platform.add_child(rope_base)
+		# spawn the target object
+		var target = Position2D.new()
+		#move the target to the target position and reparent it to the target platform
+		target.position = $Node/MouseFollower.global_position - target_platform.global_position
+		target_platform.add_child(target)
+		
+		# assign the target
+		rope_base.anchor_target_path = target.get_path()
+		
+		#remember that this is the rope we are pulling
+		last_thrown_rope_path = rope_base.get_path()
+		
+		# Initialize the ropes length
+		rope_base.init()
 	
 func get_major_platform():
 	if platforms.size() > 0:
@@ -54,13 +74,13 @@ func get_major_platform():
 
 func _on_body_entered(body):
 	if body.is_in_group("platforms"):
-		print("body entered")
+#		print("body entered")
 		platforms.append(body)
 	pass # Replace with function body.
 
 func _on_body_exited(body):
 	if body.is_in_group("platforms"):
-		print("body exited")
+#		print("body exited")
 		platforms.erase(body)
 	pass # Replace with function body.
 
@@ -68,14 +88,14 @@ func _on_body_exited(body):
 func _on_MouseFollower_body_entered(body):
 	if body.is_in_group("platforms"):
 		target_platform = body
-		print("target changed")
+#		print("target changed")
 
 
 func _on_MouseFollower_body_exited(body):
 	if body.is_in_group("platforms"):
 		if body == target_platform:
 			target_platform = null
-			print("target lost")
+#			print("target lost")
 
 
 

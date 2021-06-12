@@ -29,12 +29,6 @@ radius = 1.0
 [node name="platform" parent="Platforms" instance=ExtResource( 1 )]
 position = Vector2( 585.296, 254.416 )
 
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Platforms/platform"]
-node_a = NodePath("..")
-node_b = NodePath("../../platform2")
-length = 161.0
-rest_length = 150.0
-
 [node name="platform2" parent="Platforms" instance=ExtResource( 1 )]
 position = Vector2( 579.714, 413.956 )
 initial_speed = 0
@@ -51,6 +45,7 @@ rotation = 1.55673
 texture = ExtResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="PlatformSpawner"]
+wait_time = 3.0
 autostart = true
 
 [node name="SpawnedPlatforms" type="Node2D" parent="PlatformSpawner"]

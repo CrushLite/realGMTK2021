@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Testing/TestingJoints2.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Testing/rope_anchor_base.tscn" type="PackedScene" id=3]
+
+[node name="TestingJoints2" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="platform" parent="." instance=ExtResource( 2 )]
+position = Vector2( 266.361, 131.773 )
+rotation = -0.487232
+initial_speed = 0
+acceleration = Vector2( 0, 0 )
+
+[node name="rope_anchor_base" parent="platform" instance=ExtResource( 3 )]
+
+[node name="platform2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 358.744, 379.318 )
+initial_speed = 0
+acceleration = Vector2( 0, 0 )
+
+[node name="rope_anchor_target" type="Position2D" parent="platform2"]
+position = Vector2( -25.6935, -27.1332 )

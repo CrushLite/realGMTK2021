@@ -1,0 +1,32 @@
+[gd_scene format=2]
+
+[node name="TestingJoints" type="Node2D"]
+
+[node name="body1" type="RigidBody2D" parent="."]
+position = Vector2( 382.756, 145.818 )
+gravity_scale = 5.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="body1"]
+position = Vector2( -167.678, -118.921 )
+polygon = PoolVector2Array( 54.9926, 60.7714, 271.428, 22.7168, 330.889, 191.584, 39.5329, 204.665 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="body1"]
+node_a = NodePath("..")
+node_b = NodePath("../../body2")
+
+[node name="body2" type="RigidBody2D" parent="."]
+position = Vector2( 651.025, 130.103 )
+gravity_scale = 5.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="body2"]
+position = Vector2( -167.678, -118.921 )
+polygon = PoolVector2Array( 54.9926, 60.7714, 271.428, 22.7168, 330.889, 191.584, 39.5329, 204.665 )
+
+[node name="body3" type="RigidBody2D" parent="."]
+position = Vector2( 388.369, 577.966 )
+rotation = -2.00071
+mode = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="body3"]
+position = Vector2( -167.678, -118.921 )
+polygon = PoolVector2Array( 54.9926, 60.7714, 271.428, 22.7168, 330.889, 191.584, 39.5329, 204.665 )

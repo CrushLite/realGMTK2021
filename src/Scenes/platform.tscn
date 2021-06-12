@@ -7,7 +7,7 @@
 ]]
 gravity_scale = 0.0
 script = ExtResource( 1 )
-initial_speed = 100
+initial_speed = 20
 offset = 0.9
 acceleration = Vector2( -15, 0 )
 
