@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/rope_anchor_base.gd" type="Script" id=1]
 [ext_resource path="res://Art/icon.png" type="Texture" id=2]
+[ext_resource path="res://Art/Rope.png" type="Texture" id=3]
 
 [node name="rope_anchor_base" type="Position2D"]
 script = ExtResource( 1 )
@@ -14,6 +15,10 @@ stiffness = 64.0
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0.744751, 1.59576, 44.1206, 50.195 )
+width = 20.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 3 )
+texture_mode = 1
 
 [node name="icon" type="Sprite" parent="."]
 scale = Vector2( 0.3, 0.3 )

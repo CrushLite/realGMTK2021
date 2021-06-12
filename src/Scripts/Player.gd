@@ -10,9 +10,9 @@ var platforms = []
 var target_platform : RigidBody2D
 var last_thrown_rope_path = null
 var is_throwing = false
+var is_pulling = false
 
 onready var rope_base_tscn = preload("res://Scenes/rope_anchor_base.tscn")
-
 
 func _physics_process(delta):
 	motion = Vector2.ZERO
@@ -33,6 +33,7 @@ func _input(event):
 	if last_thrown_rope_path:
 		var last_rope = get_node_or_null(last_thrown_rope_path)
 		if Input.is_action_just_pressed("pull_rope") and last_rope: # and not is_throwing:
+			is_pulling = true
 			last_rope.pull(60)
 			pass
 	
@@ -181,8 +182,12 @@ func clamp_motion(): # limit the top speed
 
 
 func set_animations(axis, is_throwing):
+	print(axis)
+	if axis.x > 0 or axis.y > 0:
+		is_pulling = false
+	
 	if is_throwing == true:
-		$AnimatedSprite.animation = "Yeet"
+		$AnimatedSprite.play("Yeet");
 	elif axis.x > 0:
 		$AnimatedSprite.animation = "Walk"
 		$AnimatedSprite.flip_h = false
@@ -193,6 +198,8 @@ func set_animations(axis, is_throwing):
 		$AnimatedSprite.animation = "Walk"
 	elif axis.y < 0:
 		$AnimatedSprite.animation = "Walk"
+	elif is_pulling == true:
+		$AnimatedSprite.animation = "Heave"
 	else:
 		$AnimatedSprite.animation = "Idle"
 
