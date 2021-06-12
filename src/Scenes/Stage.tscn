@@ -14,12 +14,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10000, 10 )
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 991.511, 89.785, 0, 0, 0, 0, 989.829, 527.051 )
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 643.931 )
 
 [node name="Stage" type="Node2D"]
@@ -67,7 +67,7 @@ initial_speed = 0
 
 [node name="PlatformSpawner" type="Path2D" parent="."]
 position = Vector2( 322.904, 178.27 )
-curve = SubResource( 4 )
+curve = SubResource( 2 )
 script = ExtResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]
@@ -78,7 +78,7 @@ rotation = 1.57464
 texture = ExtResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="PlatformSpawner"]
-wait_time = 1.011
+wait_time = 2.6
 autostart = true
 
 [node name="SpawnedPlatforms" type="Node2D" parent="PlatformSpawner"]
@@ -88,7 +88,7 @@ position = Vector2( 0, 296.985 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformKiller"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 372.73, 362.968 )
@@ -97,17 +97,17 @@ position = Vector2( 372.73, 362.968 )
 
 [node name="penguin" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 894.714, 60.5446 )
-frame = 0
 
 [node name="penguin2" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 1146.98, 726.535 )
+frame = 0
 
 [node name="penguin3" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 1522.02, 57.181 )
+frame = 0
 
 [node name="penguin4" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 87.4533, 760.17 )
-frame = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, 420 )
