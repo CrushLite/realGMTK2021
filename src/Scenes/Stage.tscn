@@ -70,13 +70,8 @@ position = Vector2( 4632.78, 575.225 )
 position = Vector2( 4479.74, 326.319 )
 
 [node name="PlatformSpawner" type="Path2D" parent="."]
-<<<<<<< Updated upstream
-position = Vector2( 322.904, 178.27 )
-curve = SubResource( 2 )
-=======
 position = Vector2( 3830.52, 178.27 )
 curve = SubResource( 4 )
->>>>>>> Stashed changes
 script = ExtResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]
@@ -87,11 +82,7 @@ rotation = 1.58541
 texture = ExtResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="PlatformSpawner"]
-<<<<<<< Updated upstream
-wait_time = 2.6
-=======
 wait_time = 3.0
->>>>>>> Stashed changes
 autostart = true
 
 [node name="SpawnedPlatforms" type="Node2D" parent="PlatformSpawner"]
@@ -123,8 +114,6 @@ frame = 0
 
 [node name="penguin4" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 87.4533, 760.17 )
-<<<<<<< Updated upstream
-=======
 
 [node name="penguin5" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4225.95, 60.5446 )
@@ -155,7 +144,6 @@ position = Vector2( 3522.78, 57.181 )
 [node name="penguin12" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 2088.21, 760.17 )
 frame = 0
->>>>>>> Stashed changes
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "camera",
