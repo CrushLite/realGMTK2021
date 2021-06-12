@@ -19,7 +19,7 @@ func init():
 #	$rope.global_rotation = 0
 	var ang = $rope.get_angle_to(anchor_target.global_position)
 	$rope.rotate(ang - PI/2)
-	$Hook.rotate(ang - PI/2)
+	$Hook.rotate(ang - PI/2)	
 	print(ang)
 #	$rope.look_at(anchor_target.global_position)
 	

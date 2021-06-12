@@ -25,6 +25,7 @@ _data = {
 extents = Vector2( 10, 643.931 )
 
 [node name="Stage" type="Node2D"]
+rotation = -0.0153413
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -76,7 +77,7 @@ script = ExtResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]
 position = Vector2( 998.494, 102.667 )
-rotation = 1.58541
+rotation = 1.58543
 
 [node name="Sprite" type="Sprite" parent="PlatformSpawner/PathFollow2D"]
 texture = ExtResource( 7 )
@@ -103,47 +104,43 @@ screen_shake_launch = 0.3
 
 [node name="penguin" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 894.714, 60.5446 )
+frame = 0
 
 [node name="penguin2" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 1146.98, 726.535 )
-frame = 0
 
 [node name="penguin3" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 1522.02, 57.181 )
-frame = 0
 
 [node name="penguin4" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 87.4533, 760.17 )
+frame = 0
 
 [node name="penguin5" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4225.95, 60.5446 )
-frame = 0
 
 [node name="penguin6" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4478.21, 726.535 )
-frame = 0
 
 [node name="penguin7" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4853.25, 57.181 )
+frame = 0
 
 [node name="penguin8" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3418.68, 760.17 )
-frame = 0
 
 [node name="penguin9" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 2895.47, 60.5446 )
-frame = 0
 
 [node name="penguin10" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3147.74, 726.535 )
-frame = 0
 
 [node name="penguin11" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3522.78, 57.181 )
+frame = 0
 
 [node name="penguin12" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 2088.21, 760.17 )
-frame = 0
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "camera",

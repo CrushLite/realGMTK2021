@@ -13,6 +13,7 @@ var target_platform : RigidBody2D
 var last_thrown_rope_path = null
 var is_throwing = false
 var is_pulling = false
+var old_rope
 
 onready var rope_base_tscn = preload("res://Scenes/rope_anchor_base.tscn")
 
@@ -48,9 +49,16 @@ func _input(event):
 		is_throwing = true
 		# spawn a rope object
 		var rope_base = rope_base_tscn.instance()
-		# move the rope_base to the player and reparent it to the platform
-		rope_base.position = Vector2() #global_position - base_platform.global_position
-		# The above line can only be used if we figure out how to rotate around the center of the platform
+		
+		
+		# Gives the rope_base the platforms rotation
+		var target_point: Vector2 = global_position - base_platform.global_position
+		var a = target_point.angle_to(Vector2(1,0).rotated(base_platform.rotation))
+		var rotation_around_point = -a
+		var distance_from_point = (target_point).length()
+		rope_base.global_position += Vector2(cos(rotation_around_point), sin(rotation_around_point)) * distance_from_point
+		
+		
 		base_platform.add_child(rope_base)
 		# spawn the target object
 		var target = Position2D.new()
@@ -68,6 +76,10 @@ func _input(event):
 		rope_base.launch_rope()
 		rope_base.connect("attached", self, "on_rope_attached")
 		
+		# get rid of old rope
+		if old_rope:
+			old_rope.queue_free()
+		old_rope = rope_base
 		
 		# screenshake
 		var cam = get_tree().get_nodes_in_group("camera")[0]
