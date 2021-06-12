@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Bank tile.png" type="Texture" id=2]
@@ -46,6 +46,9 @@ extents = Vector2( 10, 643.931 )
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10000, 10 )
+
 [node name="Stage" type="Node2D"]
 
 [node name="Platforms" type="Node2D" parent="."]
@@ -69,7 +72,7 @@ rotation = 1.55673
 texture = ExtResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="PlatformSpawner"]
-wait_time = 3.0
+wait_time = 1.011
 autostart = true
 
 [node name="SpawnedPlatforms" type="Node2D" parent="PlatformSpawner"]
@@ -90,6 +93,21 @@ z_index = -1
 tile_set = SubResource( 3 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 4, 0, 0, 8, 0, 0, 12, 0, 0, 196608, 1, 0, 196611, 1, 0, 196612, 1, 0, 196615, 1, 0, 196618, 1, 0, 196621, 1, 0, 393216, 1, 0, 393219, 1, 0, 393220, 1, 0, 393223, 1, 0, 393226, 1, 0, 393229, 1, 0, 393230, 1, 0, 589824, 1, 0, 589827, 1, 0, 589828, 1, 0, 589831, 1, 0, 589834, 1, 0, 589837, 1, 0 )
+
+[node name="BankTop" type="StaticBody2D" parent="."]
+position = Vector2( 0, 36 )
+scale = Vector2( 1, 1.00746 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BankTop"]
+position = Vector2( 5000, 0 )
+shape = SubResource( 4 )
+
+[node name="BankBottom" type="StaticBody2D" parent="."]
+position = Vector2( 0, 640 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BankBottom"]
+position = Vector2( 5000, 0 )
+shape = SubResource( 4 )
 
 [connection signal="timeout" from="PlatformSpawner/SpawnTimer" to="PlatformSpawner" method="_on_SpawnTimer_timeout"]
 [connection signal="body_entered" from="PlatformKiller" to="PlatformKiller" method="_on_PlatformKiller_body_entered"]

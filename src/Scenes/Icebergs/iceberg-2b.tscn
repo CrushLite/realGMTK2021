@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Art/Icebergs/Iceberg-2b_0001.png" type="Texture" id=1]
+[ext_resource path="res://Art/Icebergs/Iceberg-2b_0000.png" type="Texture" id=2]
+[ext_resource path="res://Art/Icebergs/Iceberg-2b_0002.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/platform.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[node name="iceberg-2b" instance=ExtResource( 4 )]
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PoolVector2Array( 128.95, -84.496, 83.5656, -134.552, -99.3072, -109.191, -124.183, -87.1031, -130.93, 0.203918, -83.3079, 119.656, 39.7157, 124.815, 92.4968, 33.1425, 99.2432, 16.8716, 130.198, -4.95512 )
+
+[node name="icon" parent="." index="1"]
+visible = false
+
+[node name="Polygon2D" parent="." index="2"]
+visible = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 1
+playing = true
