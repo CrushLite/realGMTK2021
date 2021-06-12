@@ -71,7 +71,7 @@ position = Vector2( 4479.74, 326.319 )
 
 [node name="PlatformSpawner" type="Path2D" parent="."]
 position = Vector2( 3830.52, 178.27 )
-curve = SubResource( 4 )
+curve = SubResource( 2 )
 script = ExtResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]
