@@ -22,7 +22,7 @@ texture = ExtResource( 3 )
 texture_mode = 1
 
 [node name="icon" type="Sprite" parent="."]
-rotation = 0.00144687
+rotation = 1.5708
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 
@@ -32,5 +32,6 @@ texture = ExtResource( 2 )
 z_index = 1
 
 [node name="Sprite" type="Sprite" parent="Hook"]
+rotation = 4.71239
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )

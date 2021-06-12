@@ -18,9 +18,8 @@ func init():
 	#point the joint towards the target
 #	$rope.global_rotation = 0
 	var ang = $rope.get_angle_to(anchor_target.global_position)
-	$rope.rotate(ang - PI/2)
-	$Hook.rotate(ang - PI/2)	
-	print(ang)
+	$rope.rotate(ang - PI/2)	
+	$icon.rotate(ang- PI/2)
 #	$rope.look_at(anchor_target.global_position)
 	
 	$rope.node_a = get_parent().get_path()
@@ -37,6 +36,9 @@ func pull(amount):
 
 func _physics_process(delta):
 	var anchor_target = get_node_or_null(anchor_target_path)
+	var ang = $Hook.get_angle_to(self.global_position)
+	$Hook.rotate(ang - PI/2)
+	print("TESTER")
 	if anchor_target:
 		$Line2D.points[0] = Vector2(0,0)
 		$Line2D.points[1] = anchor_target.global_position - global_position
