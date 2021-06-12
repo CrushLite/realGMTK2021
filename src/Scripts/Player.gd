@@ -15,6 +15,10 @@ var is_throwing = false
 var is_pulling = false
 var old_rope
 
+#Used to calculate the rotation the player feels if the platform shifts underneath
+var current_major_platform = null
+var rotation_offset = 0
+
 onready var rope_base_tscn = preload("res://Scenes/rope_anchor_base.tscn")
 
 func _physics_process(delta):
@@ -23,6 +27,29 @@ func _physics_process(delta):
 	var major_platform : RigidBody2D = get_major_platform()
 	if major_platform:
 		motion += major_platform.linear_velocity
+		# Rotate the player around the platform they are standing on
+		if not current_major_platform: 
+			current_major_platform = major_platform
+			rotation_offset = major_platform.rotation
+			print("rotation offset: ", rotation_offset)
+		if current_major_platform != major_platform:
+			# we changed platforms
+			current_major_platform = major_platform
+			rotation_offset = major_platform.rotation
+			print("Changed platforms")
+		var change_in_rotation = rotation_offset - current_major_platform.rotation
+		print(change_in_rotation)
+		
+		#do the rotation
+		var target_point: Vector2 = global_position - current_major_platform.global_position
+		var a = target_point.angle_to(Vector2(1,0).rotated(change_in_rotation))
+		rotation_offset = current_major_platform.rotation
+		var rotation_around_point = -a
+		var distance_from_point = (target_point).length()
+		global_position = current_major_platform.global_position
+		global_position += Vector2(cos(rotation_around_point), sin(rotation_around_point)) * distance_from_point
+		
+		
 	else:
 #		print("we dead")
 		pass
@@ -30,6 +57,7 @@ func _physics_process(delta):
 	var axis = get_input_axis()
 	motion += axis * MAX_SPEED
 	position += motion * delta
+	
 	set_animations(axis, is_throwing)
 
 func _input(event):
@@ -116,7 +144,6 @@ func _on_MouseFollower_body_exited(body):
 		if body == target_platform:
 			target_platform = null
 #			print("target lost")
-
 
 
 
