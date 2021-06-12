@@ -7,6 +7,8 @@ var last_platforms = []
 var ropes = []
 
 func _ready():
+#	$rope_anchor_base.init()
+#	ropes.append($rope_anchor_base)
 	$platform/rope_anchor_base.init()
 	ropes.append($platform/rope_anchor_base)
 	pass
@@ -24,11 +26,12 @@ func _physics_process(delta):
 #		print($platform/rope_anchor_base/rope.rest_length)
 
 func _input(event):
+	randomize()
 	if event is InputEventMouseButton and event.is_pressed():
 #		$platform2.position = get_global_mouse_position()
-		$platform2.add_torque(1000)
+#		$platform2.add_torque(1000)
+#		return
 		
-		return
 		pass # spawn a platform under the mouse
 		var plat = platform_tscn.instance()
 		plat.acceleration = Vector2.ZERO
@@ -49,6 +52,12 @@ func _input(event):
 		var target = Position2D.new()
 		#move the target to the target position and reparent it to the target platform
 		target.position = get_global_mouse_position() - last_platforms[1].global_position # Vector2() # just put it in the center of the plat
+		
+		# target needs to rotate around origin 90? degrees
+		# WARN: this is not exact and will fail if the platforms aren't roughly round
+		var ang = target.get_angle_to(Vector2())
+		rotate_around_point(target, Vector2(0, 0), ang + PI/2) 
+		
 		last_platforms[1].add_child(target)
 		
 		# assign the target
@@ -66,3 +75,11 @@ func _input(event):
 			print(rope.rotation)
 			rope.pull(60)
 		
+
+
+func rotate_around_point(obj: Node2D, rotation_point: Vector2, rotation_around_point: float):
+	var distance_from_point = obj.global_position.distance_to(rotation_point)
+	obj.global_position = Vector2(0,0)
+	# offset using the rotation
+	obj.global_position += Vector2(cos(rotation_around_point), sin(rotation_around_point)) * distance_from_point
+	

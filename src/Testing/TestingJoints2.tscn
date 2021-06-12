@@ -14,6 +14,8 @@ initial_speed = 0
 acceleration = Vector2( 0, 0 )
 
 [node name="rope_anchor_base" parent="platform" instance=ExtResource( 3 )]
+position = Vector2( 56.594, -17.2269 )
+rotation = 0.487232
 
 [node name="platform2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 358.744, 379.318 )

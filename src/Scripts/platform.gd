@@ -6,7 +6,7 @@ export var acceleration = Vector2(-1, 0)
 
 #func _physics_process(delta):
 func _ready():
-	randomize()
+#	randomize()
 	var rand_speed = initial_speed * (1 + rand_range(-offset, offset))
 	apply_central_impulse(Vector2(-1, 0) * rand_speed)
 

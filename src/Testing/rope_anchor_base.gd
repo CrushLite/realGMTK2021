@@ -12,6 +12,14 @@ func init():
 	$rope.rest_length = $rope.length
 #	$rope.rest_length = global_position.distance_to(anchor_target.global_position)
 	print("New Length: ", $rope.length)
+	
+	#point the joint towards the target
+#	$rope.global_rotation = 0
+	var ang = $rope.get_angle_to(anchor_target.global_position)
+	$rope.rotate(ang - PI/2)
+	print(ang)
+#	$rope.look_at(anchor_target.global_position)
+	
 	$rope.node_a = get_parent().get_path()
 	$rope.node_b = anchor_target.get_parent().get_path()
 	

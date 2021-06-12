@@ -91,6 +91,6 @@ end_cap_mode = 2
 [connection signal="body_entered" from="PlatformKiller" to="PlatformKiller" method="_on_PlatformKiller_body_entered"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
 [connection signal="body_exited" from="Player" to="Player" method="_on_body_exited"]
-[connection signal="body_entered" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_entered"]
 [connection signal="body_entered" from="Player/Node/MouseFollower" to="Player/Node/MouseFollower" method="_on_MouseFollower_body_entered"]
+[connection signal="body_entered" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_entered"]
 [connection signal="body_exited" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_exited"]

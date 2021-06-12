@@ -6,12 +6,8 @@
 [node name="rope_anchor_base" type="Position2D"]
 position = Vector2( 35.1851, -26.7242 )
 script = ExtResource( 1 )
-anchor_target_path = NodePath("../../platform2/rope_anchor_target")
 
-[node name="rope" type="DampedSpringJoint2D" parent="."]
-disable_collision = false
-length = 65535.0
-stiffness = 64.0
+[node name="GrooveJoint2D" type="GrooveJoint2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0.744751, 1.59576, 44.1206, 50.195 )
