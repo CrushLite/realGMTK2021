@@ -303,7 +303,6 @@ scale = Vector2( 2.956, 3.136 )
 
 [node name="AnimatedSprite" parent="iceberg-1" index="3"]
 scale = Vector2( 2.956, 3.136 )
-frame = 0
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -411,6 +410,7 @@ position = Vector2( 5101.91, 273.033 )
 [node name="CocoaTent" type="AnimatedSprite" parent="CocoaTent"]
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 9 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CocoaTent"]
