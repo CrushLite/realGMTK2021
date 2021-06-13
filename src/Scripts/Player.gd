@@ -76,6 +76,7 @@ func _physics_process(delta):
 		is_drowned = true
 		emit_signal("drowned")
 		print("Drowned")
+		pass
 	
 	
 	var axis = get_input_axis()

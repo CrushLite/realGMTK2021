@@ -18,4 +18,4 @@ func _on_play_pressed():
 func _on_scene_ended():
 	print("scene ended")
 	curr_scene.queue_free()
-	$GUI.show()
+	$GUI/WinCard.show()

@@ -10,7 +10,7 @@ gravity_scale = 0.0
 script = ExtResource( 1 )
 initial_speed = 50
 offset = 0.9
-acceleration = Vector2( -15, 0 )
+acceleration = Vector2( 0, 0 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -45, -49, 69, -61, 111, 74, -9, 97, -88, 58 )

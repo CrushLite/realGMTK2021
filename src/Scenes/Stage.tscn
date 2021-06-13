@@ -167,7 +167,7 @@ radius = 345.429
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 998.494, 102.667, 0, 0, 0, 0, 993.454, 447.886 )
+"points": PoolVector2Array( 0, 0, 0, 0, 954.568, 167.064, 0, 0, 0, 0, 953.308, 432.908 )
 }
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -288,22 +288,14 @@ format = 1
 tile_data = PoolIntArray( -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 4, 0, -65531, 4, 0, -65530, 4, 0, -65529, 4, 0, -65528, 4, 0, -65527, 4, 0, -65526, 4, 0, -65525, 4, 0, -65524, 4, 0, -65523, 4, 0, -65522, 4, 0, -65521, 4, 0, -65520, 4, 0, -65519, 4, 0, -65518, 4, 0, -65517, 4, 0, -65516, 4, 0, -65515, 4, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 5, 0, 21, 4, 0, 65556, 7, 0, 65557, 4, 0, 131092, 7, 0, 131093, 4, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 6, 0, 196629, 4, 0, 327679, 4, 0, 262144, 4, 0, 262145, 4, 0, 262146, 4, 0, 262147, 4, 0, 262148, 4, 0, 262149, 4, 0, 262150, 4, 0, 262151, 4, 0, 262152, 4, 0, 262153, 4, 0, 262154, 4, 0, 262155, 4, 0, 262156, 4, 0, 262157, 4, 0, 262158, 4, 0, 262159, 4, 0, 262160, 4, 0, 262161, 4, 0, 262162, 4, 0, 262163, 4, 0, 262164, 4, 0, 262165, 4, 0 )
 
 [node name="iceberg-1" parent="." instance=ExtResource( 11 )]
-position = Vector2( 4589.66, 457.495 )
-mass = 100.0
+position = Vector2( 5037.66, 587.495 )
+mode = 1
+mass = 460.7
 initial_speed = 0
-acceleration = Vector2( 0, 0 )
-
-[node name="CollisionPolygon2D" parent="iceberg-1" index="0"]
-scale = Vector2( 2.956, 3.136 )
+rotate = false
 
 [node name="icon" parent="iceberg-1" index="1"]
-scale = Vector2( 2.956, 3.136 )
-
-[node name="Polygon2D" parent="iceberg-1" index="2"]
-scale = Vector2( 2.956, 3.136 )
-
-[node name="AnimatedSprite" parent="iceberg-1" index="3"]
-scale = Vector2( 2.956, 3.136 )
+scale = Vector2( 1, 1 )
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -316,16 +308,22 @@ angular_velocity = 2.0
 position = Vector2( 2938.6, 329.518 )
 
 [node name="iceberg-1" parent="Platforms" instance=ExtResource( 11 )]
-position = Vector2( 3969.46, 319.256 )
+position = Vector2( 3892.71, 544.999 )
 
 [node name="iceberg-4" parent="Platforms" instance=ExtResource( 15 )]
-position = Vector2( 3588.19, 503.786 )
+position = Vector2( 2589.06, 364.07 )
+
+[node name="iceberg-16" parent="Platforms" instance=ExtResource( 15 )]
+position = Vector2( 4092.94, 614.31 )
 
 [node name="iceberg-6" parent="Platforms" instance=ExtResource( 18 )]
 position = Vector2( 3307.52, 364.462 )
 
+[node name="iceberg-19" parent="Platforms" instance=ExtResource( 18 )]
+position = Vector2( 4364.77, 340.711 )
+
 [node name="iceberg-5" parent="Platforms" instance=ExtResource( 16 )]
-position = Vector2( 2766.72, 468.508 )
+position = Vector2( 2783.67, 549.027 )
 
 [node name="iceberg-7" parent="Platforms" instance=ExtResource( 11 )]
 position = Vector2( 1637.83, 413.072 )
@@ -333,8 +331,11 @@ position = Vector2( 1637.83, 413.072 )
 [node name="iceberg-8" parent="Platforms" instance=ExtResource( 1 )]
 position = Vector2( 1179.22, 327.397 )
 
+[node name="iceberg-18" parent="Platforms" instance=ExtResource( 1 )]
+position = Vector2( 4292.78, 600.729 )
+
 [node name="iceberg-9" parent="Platforms" instance=ExtResource( 16 )]
-position = Vector2( 3638.59, 367.714 )
+position = Vector2( 3687.73, 309.758 )
 
 [node name="iceberg-10" parent="Platforms" instance=ExtResource( 18 )]
 position = Vector2( 1461.44, 604.58 )
@@ -347,6 +348,12 @@ position = Vector2( 2398.82, 564.262 )
 
 [node name="iceberg-13" parent="Platforms" instance=ExtResource( 9 )]
 position = Vector2( 2222.44, 377.794 )
+
+[node name="iceberg-20" parent="Platforms" instance=ExtResource( 9 )]
+position = Vector2( 3595.5, 576.973 )
+
+[node name="iceberg-17" parent="Platforms" instance=ExtResource( 9 )]
+position = Vector2( 4069.23, 342.321 )
 
 [node name="iceberg-2b" parent="Platforms" instance=ExtResource( 17 )]
 position = Vector2( 1904.94, 569.302 )
@@ -371,26 +378,26 @@ icebergs = [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="WaterfallSpawner"]
-wait_time = 1.3
+wait_time = 1000.0
 autostart = true
 
 [node name="SpawnedIcebergs" type="Node2D" parent="WaterfallSpawner"]
 
 [node name="PlatformSpawner" type="Path2D" parent="."]
-position = Vector2( 3501.11, 197.297 )
+position = Vector2( 3743.61, 185.8 )
 curve = SubResource( 4 )
 script = ExtResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]
-position = Vector2( 998.494, 102.667 )
-rotation = 1.58543
+position = Vector2( 954.568, 167.064 )
+rotation = 1.57555
 
 [node name="Sprite" type="Sprite" parent="PlatformSpawner/PathFollow2D"]
 visible = false
 texture = ExtResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="PlatformSpawner"]
-wait_time = 4096.0
+wait_time = 3.7
 autostart = true
 
 [node name="SpawnedPlatforms" type="Node2D" parent="PlatformSpawner"]
@@ -411,6 +418,7 @@ position = Vector2( 5101.91, 273.033 )
 [node name="CocoaTent" type="AnimatedSprite" parent="CocoaTent"]
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 8 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CocoaTent"]
@@ -418,49 +426,53 @@ position = Vector2( -25.3984, 38.0977 )
 shape = SubResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 681.631, 366.255 )
+position = Vector2( 4019, 358.121 )
 
 [node name="Penguins" type="Node2D" parent="."]
 
 [node name="penguin" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 894.714, 60.5446 )
-frame = 0
 
 [node name="penguin2" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 1146.98, 726.535 )
+frame = 0
 
 [node name="penguin3" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 1522.02, 57.181 )
+frame = 0
 
 [node name="penguin4" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 87.4533, 760.17 )
-frame = 0
 
 [node name="penguin5" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4225.95, 60.5446 )
+frame = 0
 
 [node name="penguin6" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4478.21, 726.535 )
+frame = 0
 
 [node name="penguin7" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4853.25, 57.181 )
-frame = 0
 
 [node name="penguin8" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3418.68, 760.17 )
+frame = 0
 
 [node name="penguin9" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 2895.47, 60.5446 )
+frame = 0
 
 [node name="penguin10" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3147.74, 726.535 )
+frame = 0
 
 [node name="penguin11" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3522.78, 57.181 )
-frame = 0
 
 [node name="penguin12" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 2088.21, 760.17 )
+frame = 0
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "camera",
@@ -493,10 +505,13 @@ autoplay = true
 
 [node name="End of Stage" parent="." instance=ExtResource( 25 )]
 position = Vector2( 4976.87, 410.49 )
+mode = 1
 initial_speed = 0
-acceleration = Vector2( 0, 0 )
+rotate = false
 
 [node name="CollisionPolygon2D" parent="End of Stage" index="0"]
+position = Vector2( 48.5678, 0 )
+scale = Vector2( 0.899628, 1 )
 polygon = PoolVector2Array( -225.987, -233.96, 307.172, -233.96, 304.687, 315.378, -223.159, 314.754 )
 
 [node name="icon" parent="End of Stage" index="1"]

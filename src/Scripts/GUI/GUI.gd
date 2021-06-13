@@ -3,7 +3,7 @@ extends Control
 signal play_pressed
 
 func _on_Play_pressed():
-	hide()
+	$TitleScreen.hide()
 	emit_signal("play_pressed")
 
 
@@ -27,3 +27,10 @@ func _on_CreditsScreen_gui_input(event):
 func transition():
 	# fades to black then back to white
 	pass
+
+
+func _on_TextureRect_gui_input(event):
+	event = event as InputEventMouseButton
+	if event:
+		$WinCard.hide()
+		$TitleScreen.show()

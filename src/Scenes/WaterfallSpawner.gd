@@ -30,5 +30,6 @@ func _on_WaterfallSpawner_body_exited(body):
 		print(body.collision_layer)
 		body.collision_layer = 1
 		body.collision_mask = 1
-		(body as RigidBody2D).apply_central_impulse(Vector2(-500,0))
+		var random_number = randi()%100
+		(body as RigidBody2D).apply_central_impulse(Vector2(-0,-900-random_number))
 	pass # Replace with function body.

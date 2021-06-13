@@ -27,5 +27,4 @@ visible = false
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
 playing = true
