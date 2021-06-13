@@ -6,55 +6,55 @@
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 160, 160 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 1 )
 region = Rect2( 160, 0, 160, 160 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 320, 0, 160, 160 )
+region = Rect2( 0, 0, 160, 160 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 160, 160, 160 )
+region = Rect2( 160, 0, 160, 160 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 160, 160, 160, 160 )
+region = Rect2( 320, 0, 160, 160 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 320, 160, 160, 160 )
+region = Rect2( 0, 160, 160, 160 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 160, 160 )
+atlas = ExtResource( 2 )
+region = Rect2( 160, 160, 160, 160 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 160, 0, 160, 160 )
+atlas = ExtResource( 2 )
+region = Rect2( 320, 160, 160, 160 )
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "throwing",
-"speed": 20.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 4.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "throwing",
+"speed": 20.0
 } ]
 
 [sub_resource type="CircleShape2D" id=10]
@@ -80,6 +80,7 @@ one_shot = true
 [node name="AggroArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+visible = false
 shape = SubResource( 10 )
 
 [connection signal="animation_finished" from="." to="." method="_on_penguin_animation_finished"]

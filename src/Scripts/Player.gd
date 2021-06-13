@@ -32,6 +32,7 @@ var should_grunt = false
 #Used to calculate the rotation the player feels if the platform shifts underneath
 var current_major_platform = null
 var rotation_offset = 0
+var last_speed = 0
 
 onready var rope_base_tscn = preload("res://Scenes/rope_anchor_base.tscn")
 
@@ -50,6 +51,17 @@ func _physics_process(delta):
 	if major_platform:
 		if not is_landed: is_landed = true
 		
+		# slow down the platform
+		if (major_platform.linear_velocity.length() 
+				> major_platform.initial_speed * 1.2
+				and major_platform.linear_velocity.x < 0):
+			major_platform.apply_central_impulse(Vector2(550, 0) * delta)
+#			major_platform.modulate = Color(0.7, 0.7, 0.7)
+		else:
+			pass
+#			major_platform.modulate = Color(1,1,1)
+#			print("slowing down platform")
+			
 		motion += major_platform.linear_velocity
 		
 		# Rotate the player around the platform they are standing on

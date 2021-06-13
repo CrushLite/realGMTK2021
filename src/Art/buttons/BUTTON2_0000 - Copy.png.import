@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/BUTTON2_0000 - Copy.png-edb72f60c0351116e63abf242707d9c4.res"
+
+[deps]
+
+source_file="res://Art/buttons/BUTTON2_0000 - Copy.png"
+dest_files=[ "res://.import/BUTTON2_0000 - Copy.png-edb72f60c0351116e63abf242707d9c4.res" ]
+
+[params]
+
+create_from=0
+threshold=0.01

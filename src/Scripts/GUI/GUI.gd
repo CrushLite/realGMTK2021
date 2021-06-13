@@ -14,10 +14,10 @@ func _on_Comic_gui_input(event):
 	if $Comic/AnimationPlayer.is_playing():
 		$Comic/AnimationPlayer.seek(5.9, true)
 	else:
-		if cnt == 0:
-			cnt += 1
-			emit_signal("play_pressed")
-			$Comic.hide()
+#		if cnt == 0:
+#			cnt += 1
+		emit_signal("play_pressed")
+		$Comic.hide()
 
 
 func _on_Options_pressed():

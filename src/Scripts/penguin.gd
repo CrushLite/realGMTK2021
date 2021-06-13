@@ -15,6 +15,12 @@ func _on_penguin_animation_finished():
 
 
 func _on_Timer_timeout():
+	if player_path:
+		var player = get_node(player_path)
+		if player.global_position.x > global_position.x:
+			flip_h = true
+		else:
+			flip_h = false
 	play("throwing")
 	$subTimer.start()
 	pass # Replace with function body.

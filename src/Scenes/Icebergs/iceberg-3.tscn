@@ -28,5 +28,5 @@ visible = false
 position = Vector2( -2.20486, 1.88989 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 1
+frame = 2
 playing = true

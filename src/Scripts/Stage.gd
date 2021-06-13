@@ -17,7 +17,7 @@ func _process(delta):
 func _on_player_drowned():
 	# initiate the black death,
 	$BlackDeath.visible = true
-	$BlackDeath.position = $Player.position
+	$BlackDeath.global_position = $Player.get_child(0).global_position
 	$BlackDeath/AnimationPlayer.play("zoom")
 	# wait for the animation to finish
 

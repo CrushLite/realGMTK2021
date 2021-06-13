@@ -1,14 +1,14 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scripts/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GUI/GUI.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/CreditsScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Art/gradient1.png" type="Texture" id=4]
 [ext_resource path="res://Art/Panic frozen.png" type="Texture" id=5]
-[ext_resource path="res://Art/button_pressed2.png" type="Texture" id=6]
-[ext_resource path="res://Art/button_pressed.png" type="Texture" id=7]
-[ext_resource path="res://Art/Icebergs/Iceberg-5_0000.png" type="Texture" id=8]
-[ext_resource path="res://Art/button_pressed_mask.png" type="BitMap" id=9]
+[ext_resource path="res://Art/buttons/button3_0001.png" type="Texture" id=6]
+[ext_resource path="res://Art/buttons/button3_0002.png" type="Texture" id=7]
+[ext_resource path="res://Art/buttons/button3_0000.png" type="Texture" id=8]
+[ext_resource path="res://Other/Shaders/02.uv_texture_offset/WaterTextureOffset.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Art/Victory_card.png" type="Texture" id=10]
 [ext_resource path="res://Other/Fonts/ARLRDBD.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://Art/comic_cut/comic2.png" type="Texture" id=12]
@@ -17,6 +17,13 @@
 [ext_resource path="res://Art/comicintrotransparent.png" type="Texture" id=15]
 [ext_resource path="res://Art/comic_cut/comic3.png" type="Texture" id=16]
 [ext_resource path="res://Art/comic_cut/comic4.png" type="Texture" id=17]
+[ext_resource path="res://Art/buttons/BUTTON2_0001.png" type="Texture" id=18]
+[ext_resource path="res://Art/buttons/BUTTON2_0000.png" type="Texture" id=19]
+[ext_resource path="res://Art/buttons/BUTTON2_0002.png" type="Texture" id=20]
+[ext_resource path="res://Art/buttons/button2_mask.png" type="BitMap" id=21]
+[ext_resource path="res://Art/buttons/button1_0000.png" type="Texture" id=22]
+[ext_resource path="res://Art/buttons/button1_0002.png" type="Texture" id=23]
+[ext_resource path="res://Art/buttons/button1_0001.png" type="Texture" id=24]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pulse"
@@ -170,7 +177,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="WaterTextureOffset" parent="GUI" instance=ExtResource( 9 )]
+position = Vector2( -36.6124, -17.4272 )
+scale = Vector2( 27.0191, 3.25226 )
+
 [node name="gradient1" type="Sprite" parent="GUI"]
+visible = false
 self_modulate = Color( 0.65, 0.611, 0.611, 1 )
 position = Vector2( 530.071, 208.357 )
 scale = Vector2( 1.33712, 1.33712 )
@@ -187,19 +199,21 @@ __meta__ = {
 }
 
 [node name="Play" type="TextureButton" parent="GUI/TitleScreen"]
-margin_left = 50.9424
-margin_top = 197.776
-margin_right = 450.942
-margin_bottom = 497.776
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 6 )
-texture_click_mask = ExtResource( 9 )
+anchor_right = 2.98023e-08
+margin_left = 66.166
+margin_top = 164.14
+margin_right = 466.166
+margin_bottom = 464.14
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 18 )
+texture_click_mask = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="GUI/TitleScreen/Play"]
+visible = false
 margin_left = 139.343
 margin_top = 136.346
 margin_right = 260.343
@@ -210,17 +224,20 @@ text = "Play"
 [node name="Controls" type="TextureButton" parent="GUI/TitleScreen"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 447.523
-margin_top = 63.2817
-margin_right = 894.523
-margin_bottom = 363.282
-rect_scale = Vector2( -1, -1 )
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 6 )
-texture_click_mask = ExtResource( 9 )
+margin_left = 122.484
+margin_top = -274.834
+margin_right = 569.484
+margin_bottom = 25.1659
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
+texture_click_mask = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label2" type="Label" parent="GUI/TitleScreen/Controls"]
+visible = false
 margin_left = 333.651
 margin_top = 177.83
 margin_right = 599.651
@@ -261,15 +278,18 @@ autoplay = "bob"
 anims/bob = SubResource( 2 )
 
 [node name="Title" type="Label" parent="GUI/TitleScreen"]
-margin_left = 40.4543
-margin_top = 103.383
-margin_right = 388.454
-margin_bottom = 196.383
+margin_left = 50.4543
+margin_top = 93.383
+margin_right = 398.454
+margin_bottom = 186.383
 rect_rotation = -3.61879
 rect_scale = Vector2( 1.51383, 1.51383 )
 text = "Frosty Boy's 
 Freakout!"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ControlsScreen" type="Control" parent="GUI"]
 visible = false
@@ -329,19 +349,23 @@ __meta__ = {
 }
 
 [node name="Back" type="TextureButton" parent="GUI/ControlsScreen"]
-margin_left = 52.4407
-margin_top = 346.109
-margin_right = 452.441
-margin_bottom = 646.109
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 91.4841
+margin_top = -286.834
+margin_right = 538.484
+margin_bottom = 13.1659
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 6 )
-texture_click_mask = ExtResource( 9 )
+texture_click_mask = ExtResource( 21 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="Label" type="Label" parent="GUI/ControlsScreen/Back"]
+visible = false
 margin_left = 139.343
 margin_top = 136.346
 margin_right = 260.343
