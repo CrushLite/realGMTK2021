@@ -276,6 +276,8 @@ func set_animations(axis):
 		$AnimatedSprite.animation = "Idle"
 		pass # TODO: add win animation
 	elif is_drowned:
+		$Splash.play()
+		$Scream.play()
 		$AnimatedSprite.play("Drown");
 	elif is_throwing == true:
 		$AnimatedSprite.play("Yeet");
