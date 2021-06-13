@@ -10,6 +10,8 @@ export var SLIPPERY = false    # whether the character slides a bit when changin
 export var screen_shake_pull = 0.3
 export var screen_shake_launch = 0.3
 export var pull_amount = 60
+export var rope_offset = Vector2(-5, -25)
+
 
 var motion = Vector2.ZERO
 var axis = Vector2.ZERO
@@ -22,6 +24,8 @@ var is_drowned = false
 var is_landed = false # gets true the first time that we appear on a platform
 var is_win = false
 var old_rope
+var being_pushed = false
+
 
 var should_grunt = false
 
@@ -41,7 +45,6 @@ func _physics_process(delta):
 	if is_drowned: # prvent movement if we've drowned
 		return
 	
-	motion = Vector2.ZERO
 #	var x = Vector2(0,0)
 	var major_platform : RigidBody2D = get_major_platform()
 	if major_platform:
@@ -78,8 +81,10 @@ func _physics_process(delta):
 		print("Drowned")
 		pass
 	
-	
-	var axis = get_input_axis()
+	if not being_pushed:
+		axis = get_input_axis()
+	else:
+		being_pushed = false
 	if not is_throwing:
 		motion += axis * MAX_SPEED
 	else:
@@ -87,6 +92,8 @@ func _physics_process(delta):
 	
 	if not is_win:
 		emit_signal("motion", motion)
+		
+	motion = Vector2.ZERO
 #	position += motion * delta
 	
 	set_animations(axis)
@@ -120,7 +127,7 @@ func _input(event):
 		var rotation_around_point = -a
 		var distance_from_point = (target_point).length()
 		rope_base.global_position += Vector2(cos(rotation_around_point), sin(rotation_around_point)) * distance_from_point
-		
+#		rope_base.position += rope_offset
 		
 		base_platform.add_child(rope_base)
 		# spawn the target object
@@ -187,9 +194,10 @@ func _on_MouseFollower_body_exited(body):
 			target_platform = null
 #			print("target lost")
 
-
-
-
+func push(velocity):
+	motion += velocity
+	axis = velocity.normalized()
+	being_pushed = true
 
 
 
