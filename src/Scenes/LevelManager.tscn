@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GUI/GUI.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Art/Icebergs/Iceberg-5_0000.png" type="Texture" id=8]
 [ext_resource path="res://Art/button_pressed_mask.png" type="BitMap" id=9]
 [ext_resource path="res://Art/Victory_card.png" type="Texture" id=10]
+[ext_resource path="res://Other/Fonts/ARLRDBD.TTF" type="DynamicFontData" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pulse"
@@ -66,6 +67,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+font_data = ExtResource( 11 )
 
 [node name="LevelManager" type="Control"]
 anchor_right = 1.0
@@ -278,10 +283,26 @@ __meta__ = {
 anims/fade = SubResource( 3 )
 
 [node name="WinCard" type="TextureRect" parent="GUI"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedRunTimer" type="Label" parent="GUI/WinCard"]
+margin_left = 905.535
+margin_top = 21.2221
+margin_right = 992.535
+margin_bottom = 87.2221
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 83.2811, 30.1879 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "123"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="GUI/TitleScreen/Play" to="GUI" method="_on_Play_pressed"]
 [connection signal="pressed" from="GUI/TitleScreen/Controls" to="GUI" method="_on_Options_pressed"]

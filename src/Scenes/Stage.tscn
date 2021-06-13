@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Scenes/Icebergs/iceberg-3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Bank tile.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Art/Poof0000.png" type="Texture" id=28]
 [ext_resource path="res://Art/Poof0002.png" type="Texture" id=29]
 [ext_resource path="res://Art/black_tile.png" type="Texture" id=30]
+[ext_resource path="res://Other/Fonts/ARLRDBD.TTF" type="DynamicFontData" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10000, 10 )
@@ -194,6 +195,10 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=9]
 radius = 146.01
 
+[sub_resource type="DynamicFont" id=15]
+size = 48
+font_data = ExtResource( 31 )
+
 [sub_resource type="Animation" id=10]
 length = 1.4
 tracks/0/type = "bezier"
@@ -297,12 +302,13 @@ rotate = false
 [node name="icon" parent="iceberg-1" index="1"]
 scale = Vector2( 1, 1 )
 
+[node name="AnimatedSprite" parent="iceberg-1" index="3"]
+frame = 2
+
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="iceberg-2" parent="Platforms" instance=ExtResource( 9 )]
 position = Vector2( 658.466, 407.627 )
-linear_velocity = Vector2( 0, 200 )
-angular_velocity = 2.0
 
 [node name="iceberg-3" parent="Platforms" instance=ExtResource( 1 )]
 position = Vector2( 2938.6, 329.518 )
@@ -390,7 +396,7 @@ script = ExtResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlatformSpawner"]
 position = Vector2( 954.568, 167.064 )
-rotation = 1.57555
+rotation = 1.57549
 
 [node name="Sprite" type="Sprite" parent="PlatformSpawner/PathFollow2D"]
 visible = false
@@ -418,7 +424,6 @@ position = Vector2( 5101.91, 273.033 )
 [node name="CocoaTent" type="AnimatedSprite" parent="CocoaTent"]
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 8 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CocoaTent"]
@@ -426,7 +431,7 @@ position = Vector2( -25.3984, 38.0977 )
 shape = SubResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 4019, 358.121 )
+position = Vector2( 603.174, 357.319 )
 
 [node name="Penguins" type="Node2D" parent="."]
 
@@ -478,6 +483,7 @@ frame = 0
 "camera",
 ]]
 position = Vector2( 0, 420 )
+z_index = 3
 current = true
 zoom = Vector2( 1.4, 1.4 )
 script = ExtResource( 4 )
@@ -485,6 +491,29 @@ x_limit = 600
 target = NodePath("../Player")
 max_trauma = 0.44
 only_x = true
+
+[node name="SpeedTimer" type="Label" parent="Camera2D" groups=[
+"SpeedTimer",
+]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 545.578
+margin_top = -389.316
+margin_right = 676.578
+margin_bottom = -332.316
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 129.794, 27.8686 )
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "11.00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/SpeedTimer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.266667 )
 
 [node name="BlackDeath" type="Polygon2D" parent="."]
 visible = false

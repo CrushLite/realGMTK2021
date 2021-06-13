@@ -15,7 +15,14 @@ func _on_play_pressed():
 	curr_scene = scene
 
 
-func _on_scene_ended():
+func _on_scene_ended(cond, time):
 	print("scene ended")
 	curr_scene.queue_free()
-	$GUI/WinCard.show()
+	if cond:
+		print("upper")
+		$GUI/WinCard.show()
+		$GUI/WinCard/SpeedRunTimer.text = "%.2f" % time
+	else:
+		print("lower")
+		$GUI/WinCard.hide()
+		$GUI/TitleScreen.show()
