@@ -173,28 +173,28 @@ _data = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10, 643.931 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 26 )
 region = Rect2( 0, 0, 400, 400 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 26 )
 region = Rect2( 400, 0, 400, 400 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=9]
 radius = 146.01
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=10]
 length = 1.4
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:scale:x")
@@ -289,6 +289,7 @@ tile_data = PoolIntArray( -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -6
 
 [node name="iceberg-1" parent="." instance=ExtResource( 11 )]
 position = Vector2( 4589.66, 457.495 )
+mass = 100.0
 initial_speed = 0
 acceleration = Vector2( 0, 0 )
 
@@ -409,13 +410,12 @@ position = Vector2( 5101.91, 273.033 )
 
 [node name="CocoaTent" type="AnimatedSprite" parent="CocoaTent"]
 scale = Vector2( 0.6, 0.6 )
-frames = SubResource( 9 )
-frame = 1
+frames = SubResource( 8 )
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CocoaTent"]
 position = Vector2( -25.3984, 38.0977 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 681.631, 366.255 )
@@ -424,47 +424,43 @@ position = Vector2( 681.631, 366.255 )
 
 [node name="penguin" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 894.714, 60.5446 )
+frame = 0
 
 [node name="penguin2" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 1146.98, 726.535 )
-frame = 0
 
 [node name="penguin3" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 1522.02, 57.181 )
-frame = 0
 
 [node name="penguin4" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 87.4533, 760.17 )
+frame = 0
 
 [node name="penguin5" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4225.95, 60.5446 )
-frame = 0
 
 [node name="penguin6" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4478.21, 726.535 )
-frame = 0
 
 [node name="penguin7" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 4853.25, 57.181 )
+frame = 0
 
 [node name="penguin8" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3418.68, 760.17 )
-frame = 0
 
 [node name="penguin9" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 2895.47, 60.5446 )
-frame = 0
 
 [node name="penguin10" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3147.74, 726.535 )
-frame = 0
 
 [node name="penguin11" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 3522.78, 57.181 )
+frame = 0
 
 [node name="penguin12" parent="Penguins" instance=ExtResource( 3 )]
 position = Vector2( 2088.21, 760.17 )
-frame = 0
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "camera",
@@ -488,7 +484,7 @@ invert_border = 8803.9
 polygon = PoolVector2Array( 0.65625, -0.757813, 0.90625, -0.421875, 1, -0.0078125, 0.9375, 0.390625, 0.710938, 0.695313, 0.4375, 0.90625, 0, 1.00781, -0.453125, 0.890625, -0.734375, 0.695313, -0.90625, 0.414063, -1, 0, -0.945313, -0.382813, -0.726563, -0.710938, -0.382813, -0.90625, 0.0078125, -1, 0.367188, -0.929688 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlackDeath"]
-anims/zoom = SubResource( 6 )
+anims/zoom = SubResource( 10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
