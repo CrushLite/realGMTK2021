@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Scripts/MouseFollower.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Art/Panic heave.png" type="Texture" id=7]
 [ext_resource path="res://Art/Panic drown.png" type="Texture" id=8]
 [ext_resource path="res://Sounds/Grunt.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Scripts/PlayerBody.gd" type="Script" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0779
@@ -18,236 +19,252 @@ radius = 1.0
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 4 )
 region = Rect2( 180, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 5 )
-region = Rect2( 0, 180, 180, 180 )
+region = Rect2( 0, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 5 )
-region = Rect2( 180, 180, 180, 180 )
+region = Rect2( 180, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 180, 180 )
+atlas = ExtResource( 5 )
+region = Rect2( 0, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 180, 0, 180, 180 )
+atlas = ExtResource( 5 )
+region = Rect2( 180, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 360, 0, 180, 180 )
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 180, 180, 180 )
+atlas = ExtResource( 7 )
+region = Rect2( 180, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 180, 180, 180, 180 )
+atlas = ExtResource( 7 )
+region = Rect2( 360, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 180, 180 )
+atlas = ExtResource( 7 )
+region = Rect2( 0, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 180, 0, 180, 180 )
+atlas = ExtResource( 7 )
+region = Rect2( 180, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 360, 0, 180, 180 )
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 540, 0, 180, 180 )
+atlas = ExtResource( 3 )
+region = Rect2( 180, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 720, 0, 180, 180 )
+atlas = ExtResource( 3 )
+region = Rect2( 360, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 3 )
 region = Rect2( 180, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 360, 180, 180, 180 )
+region = Rect2( 0, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 540, 180, 180, 180 )
+region = Rect2( 180, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=21]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 720, 180, 180, 180 )
+region = Rect2( 360, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=22]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 0, 360, 180, 180 )
+region = Rect2( 540, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=23]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 180, 360, 180, 180 )
+region = Rect2( 720, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=24]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 360, 360, 180, 180 )
+region = Rect2( 0, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=25]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 540, 360, 180, 180 )
+region = Rect2( 180, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=26]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 720, 360, 180, 180 )
+region = Rect2( 360, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=27]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 0, 540, 180, 180 )
+region = Rect2( 540, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=28]
 flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 180, 180 )
+atlas = ExtResource( 8 )
+region = Rect2( 720, 180, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=29]
 flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 180, 0, 180, 180 )
+atlas = ExtResource( 8 )
+region = Rect2( 0, 360, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=30]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 180, 180 )
+atlas = ExtResource( 8 )
+region = Rect2( 180, 360, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=31]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 180, 0, 180, 180 )
+atlas = ExtResource( 8 )
+region = Rect2( 360, 360, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=32]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 360, 0, 180, 180 )
+atlas = ExtResource( 8 )
+region = Rect2( 540, 360, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=33]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 0, 180, 180, 180 )
+atlas = ExtResource( 8 )
+region = Rect2( 720, 360, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 180, 180, 180, 180 )
+atlas = ExtResource( 8 )
+region = Rect2( 0, 540, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=35]
 flags = 4
-atlas = ExtResource( 4 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=36]
 flags = 4
-atlas = ExtResource( 4 )
+atlas = ExtResource( 6 )
 region = Rect2( 180, 0, 180, 180 )
 
 [sub_resource type="SpriteFrames" id=37]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": true,
-"name": "Yeet",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
-"loop": false,
-"name": "Drown",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 28 ), SubResource( 29 ) ],
-"loop": true,
-"name": "Balance",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "Heave",
 "speed": 12.0
 }, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "Yeet",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"loop": false,
+"name": "Drown",
+"speed": 10.0
+}, {
 "frames": [ SubResource( 35 ), SubResource( 36 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Balance",
 "speed": 5.0
 } ]
 
-[node name="Player" type="Area2D"]
+[sub_resource type="CircleShape2D" id=38]
+radius = 23.5192
+
+[node name="PlayerBody" type="KinematicBody2D"]
+collision_layer = 512
+collision_mask = 512
+script = ExtResource( 10 )
+
+[node name="Player" type="Area2D" parent="."]
 script = ExtResource( 2 )
 MAX_SPEED = 300
 screen_shake_pull = 0.1
 screen_shake_launch = 0.1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node" parent="Player"]
 
-[node name="MouseFollower" type="Area2D" parent="Node"]
+[node name="MouseFollower" type="Area2D" parent="Player/Node"]
 script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/MouseFollower"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Node/MouseFollower"]
 shape = SubResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 position = Vector2( 1.29291, -28.2843 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 37 )
 animation = "Yeet"
+frame = 2
 playing = true
 
-[node name="Grunt" type="AudioStreamPlayer" parent="."]
+[node name="Grunt" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 9 )
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="body_entered" from="Node/MouseFollower" to="Node/MouseFollower" method="_on_MouseFollower_body_entered"]
-[connection signal="body_entered" from="Node/MouseFollower" to="." method="_on_MouseFollower_body_entered"]
-[connection signal="body_exited" from="Node/MouseFollower" to="." method="_on_MouseFollower_body_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 38 )
+
+[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
+[connection signal="body_exited" from="Player" to="Player" method="_on_body_exited"]
+[connection signal="drowned" from="Player" to="." method="_on_Player_drowned"]
+[connection signal="motion" from="Player" to="." method="_on_Player_motion"]
+[connection signal="win" from="Player" to="." method="_on_Player_win"]
+[connection signal="body_entered" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_entered"]
+[connection signal="body_entered" from="Player/Node/MouseFollower" to="Player/Node/MouseFollower" method="_on_MouseFollower_body_entered"]
+[connection signal="body_exited" from="Player/Node/MouseFollower" to="Player" method="_on_MouseFollower_body_exited"]

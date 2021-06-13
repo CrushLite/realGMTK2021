@@ -1,6 +1,8 @@
 extends Area2D
 
 signal drowned
+signal motion
+signal win
 
 export var MAX_SPEED = 200     # pixels per second I believe
 export var ACCELERATION = 1000 # Accel for both moving and stopping
@@ -17,6 +19,7 @@ var is_throwing = false
 var is_pulling = false
 var is_drowned = false
 var is_landed = false # gets true the first time that we appear on a platform
+var is_win = false
 var old_rope
 
 var should_grunt = false
@@ -79,8 +82,10 @@ func _physics_process(delta):
 		motion += axis * MAX_SPEED
 	else:
 		axis = Vector2()
-			
-	position += motion * delta
+	
+	if not is_win:
+		emit_signal("motion", motion)
+#	position += motion * delta
 	
 	set_animations(axis)
 
@@ -150,7 +155,14 @@ func _on_body_entered(body):
 	if body.is_in_group("platforms"):
 #		print("body entered")
 		platforms.append(body)
-	pass # Replace with function body.
+
+func _on_area_entered(area):
+	if area.is_in_group("victory"):
+		# trigger the win animations
+		is_win = true
+		emit_signal("win")
+
+
 
 func _on_body_exited(body):
 	if body.is_in_group("platforms"):
@@ -260,7 +272,10 @@ func set_animations(axis):
 		if is_instance_valid(old_rope):
 			old_rope.queue_free()
 	
-	if is_drowned:
+	if is_win:
+		$AnimatedSprite.animation = "Idle"
+		pass # TODO: add win animation
+	elif is_drowned:
 		$AnimatedSprite.play("Drown");
 	elif is_throwing == true:
 		$AnimatedSprite.play("Yeet");
@@ -282,3 +297,5 @@ func set_animations(axis):
 
 func on_rope_attached():
 	is_throwing = false
+
+
