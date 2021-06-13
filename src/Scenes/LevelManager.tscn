@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GUI/GUI.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Art/button_pressed2.png" type="Texture" id=6]
 [ext_resource path="res://Art/button_pressed.png" type="Texture" id=7]
 [ext_resource path="res://Art/Icebergs/Iceberg-5_0000.png" type="Texture" id=8]
+[ext_resource path="res://Art/button_pressed_mask.png" type="BitMap" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pulse"
@@ -97,13 +98,14 @@ __meta__ = {
 }
 
 [node name="Play" type="TextureButton" parent="GUI/TitleScreen"]
-margin_left = 55.4373
-margin_top = 230.739
-margin_right = 455.437
-margin_bottom = 530.739
+margin_left = 50.9424
+margin_top = 197.776
+margin_right = 450.942
+margin_bottom = 497.776
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 6 )
+texture_click_mask = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -119,14 +121,15 @@ text = "Play"
 [node name="Controls" type="TextureButton" parent="GUI/TitleScreen"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 444.526
-margin_top = 78.2648
-margin_right = 891.526
-margin_bottom = 378.265
+margin_left = 447.523
+margin_top = 63.2817
+margin_right = 894.523
+margin_bottom = 363.282
 rect_scale = Vector2( -1, -1 )
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 6 )
+texture_click_mask = ExtResource( 9 )
 
 [node name="Label2" type="Label" parent="GUI/TitleScreen/Controls"]
 margin_left = 333.651
@@ -159,7 +162,7 @@ autoplay = "pulse"
 anims/pulse = SubResource( 1 )
 
 [node name="Panic frozen" type="Sprite" parent="GUI/TitleScreen"]
-position = Vector2( 778.124, 235.053 )
+position = Vector2( 778.124, 226.935 )
 rotation = -0.132976
 scale = Vector2( 1.73543, 1.73543 )
 texture = ExtResource( 5 )
@@ -236,17 +239,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" type="Button" parent="GUI/ControlsScreen"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 25.0
-margin_top = -130.0
-margin_right = 472.0
-margin_bottom = -42.0
-text = "Back"
+[node name="Back" type="TextureButton" parent="GUI/ControlsScreen"]
+margin_left = 52.4407
+margin_top = 346.109
+margin_right = 452.441
+margin_bottom = 646.109
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+texture_click_mask = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="GUI/ControlsScreen/Back"]
+margin_left = 139.343
+margin_top = 136.346
+margin_right = 260.343
+margin_bottom = 181.346
+custom_colors/font_color = Color( 0.117647, 0.121569, 0.282353, 1 )
+text = "Back"
 
 [node name="CreditsScreen" parent="GUI" instance=ExtResource( 3 )]
 visible = false
