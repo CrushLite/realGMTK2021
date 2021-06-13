@@ -9,7 +9,7 @@
 [ext_resource path="res://Scenes/Icebergs/iceberg-6.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Icebergs/iceberg-3.tscn" type="PackedScene" id=8]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 radius = 345.429
 
 [node name="WaterfallSpawner" type="Area2D"]
@@ -23,7 +23,7 @@ __meta__ = {
 icebergs = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ]
 
 [node name="WaterfallShape" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.8

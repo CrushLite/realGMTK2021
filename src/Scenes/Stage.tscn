@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scenes/Icebergs/iceberg-3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Bank tile.png" type="Texture" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://Art/Transition tile.png" type="Texture" id=22]
 [ext_resource path="res://Art/land tile.png" type="Texture" id=23]
 [ext_resource path="res://Art/Bank tile tansition.png" type="Texture" id=24]
+[ext_resource path="res://Scenes/platform.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Art/Cocoa tent.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10000, 10 )
@@ -176,12 +178,43 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.4 )
 }
 
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 400, 0, 400, 400 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 146.01
+
+[sub_resource type="ParticlesMaterial" id=11]
+emission_shape = 1
+emission_sphere_radius = 47.86
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 15.08
+
 [node name="Stage" type="Node2D"]
 script = ExtResource( 13 )
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="WaterTextureOffset" parent="Environment" instance=ExtResource( 10 )]
+position = Vector2( -405.632, 177.126 )
 
 [node name="BankBottom" type="StaticBody2D" parent="Environment"]
 position = Vector2( 0, 739.69 )
@@ -235,6 +268,7 @@ scale = Vector2( 2.956, 3.136 )
 
 [node name="AnimatedSprite" parent="iceberg-1" index="3"]
 scale = Vector2( 2.956, 3.136 )
+frame = 2
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -296,7 +330,7 @@ position = Vector2( 20.08, 15.6703 )
 shape = SubResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 3465.68, 365.116 )
+position = Vector2( 4629.19, 443.515 )
 screen_shake_pull = 0.151
 screen_shake_launch = 0.3
 
@@ -374,9 +408,120 @@ stream = ExtResource( 20 )
 volume_db = -20.0
 autoplay = true
 
+[node name="End of Stage" parent="." instance=ExtResource( 25 )]
+position = Vector2( 4976.87, 410.49 )
+initial_speed = 0
+acceleration = Vector2( 0, 0 )
+
+[node name="CollisionPolygon2D" parent="End of Stage" index="0"]
+polygon = PoolVector2Array( -225.987, -233.96, 307.172, -233.96, 304.687, 315.378, -223.159, 314.754 )
+
+[node name="icon" parent="End of Stage" index="1"]
+visible = false
+
+[node name="Polygon2D" parent="End of Stage" index="2"]
+visible = false
+
+[node name="CocoaTent" type="Area2D" parent="."]
+position = Vector2( 5101.91, 273.033 )
+
+[node name="CocoaTent" type="AnimatedSprite" parent="CocoaTent"]
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 9 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CocoaTent"]
+position = Vector2( -25.3984, 38.0977 )
+shape = SubResource( 10 )
+
+[node name="Waterfall" type="Node2D" parent="."]
+visible = false
+
+[node name="particles" type="Particles2D" parent="Waterfall"]
+position = Vector2( 19.0818, 269.391 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles2" type="Particles2D" parent="Waterfall"]
+position = Vector2( -16.8259, 368.925 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles3" type="Particles2D" parent="Waterfall"]
+position = Vector2( 47.4301, 442.63 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles4" type="Particles2D" parent="Waterfall"]
+position = Vector2( -37.6146, 480.428 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles5" type="Particles2D" parent="Waterfall"]
+position = Vector2( 34.7025, 562.835 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles6" type="Particles2D" parent="Waterfall"]
+position = Vector2( -55.2735, 609.926 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles7" type="Particles2D" parent="Waterfall"]
+position = Vector2( -50.2281, 237.409 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles8" type="Particles2D" parent="Waterfall"]
+position = Vector2( -81.3412, 318.976 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles9" type="Particles2D" parent="Waterfall"]
+position = Vector2( -99, 401.383 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles10" type="Particles2D" parent="Waterfall"]
+position = Vector2( 66.6566, 354.293 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles11" type="Particles2D" parent="Waterfall"]
+position = Vector2( -99.8409, 514.904 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles12" type="Particles2D" parent="Waterfall"]
+position = Vector2( 18.7254, 656.175 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles13" type="Particles2D" parent="Waterfall"]
+position = Vector2( -50.228, 680.561 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles14" type="Particles2D" parent="Waterfall"]
+position = Vector2( -97.3183, 604.039 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles15" type="Particles2D" parent="Waterfall"]
+position = Vector2( -122.545, 673.834 )
+amount = 40
+process_material = SubResource( 11 )
+
+[node name="particles16" type="Particles2D" parent="Waterfall"]
+position = Vector2( 64.1339, 680.561 )
+amount = 40
+process_material = SubResource( 11 )
+
 [connection signal="body_exited" from="WaterfallSpawner" to="WaterfallSpawner" method="_on_WaterfallSpawner_body_exited"]
 [connection signal="timeout" from="WaterfallSpawner/Timer" to="WaterfallSpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="PlatformSpawner/SpawnTimer" to="PlatformSpawner" method="_on_SpawnTimer_timeout"]
 [connection signal="body_entered" from="PlatformKiller" to="PlatformKiller" method="_on_PlatformKiller_body_entered"]
 
 [editable path="iceberg-1"]
+[editable path="End of Stage"]

@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GUI/GUI.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/CreditsScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art/gradient1.png" type="Texture" id=4]
+[ext_resource path="res://Art/Panic frozen.png" type="Texture" id=5]
+[ext_resource path="res://Art/button_pressed2.png" type="Texture" id=6]
+[ext_resource path="res://Art/button_pressed.png" type="Texture" id=7]
+[ext_resource path="res://Art/Icebergs/Iceberg-5_0000.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pulse"
@@ -30,7 +35,23 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "fade"
+resource_name = "bob"
+length = 1.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 778.124, 280.5 ), Vector2( 778.124, 226.561 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
@@ -60,6 +81,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="gradient1" type="Sprite" parent="GUI"]
+position = Vector2( 530.071, 208.357 )
+scale = Vector2( 1.33712, 1.33712 )
+texture = ExtResource( 4 )
+
 [node name="TitleScreen" type="Control" parent="GUI"]
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -70,25 +96,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Play" type="Button" parent="GUI/TitleScreen"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 25.0
-margin_top = -257.0
-margin_right = 476.0
-margin_bottom = -169.0
-text = "Play!"
+[node name="Play" type="TextureButton" parent="GUI/TitleScreen"]
+margin_left = 55.4373
+margin_top = 230.739
+margin_right = 455.437
+margin_bottom = 530.739
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Controls" type="Button" parent="GUI/TitleScreen"]
+[node name="Label" type="Label" parent="GUI/TitleScreen/Play"]
+margin_left = 139.343
+margin_top = 136.346
+margin_right = 260.343
+margin_bottom = 181.346
+custom_colors/font_color = Color( 0.117647, 0.121569, 0.282353, 1 )
+text = "Play"
+
+[node name="Controls" type="TextureButton" parent="GUI/TitleScreen"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 25.0
-margin_top = -130.0
-margin_right = 472.0
-margin_bottom = -42.0
+margin_left = 444.526
+margin_top = 78.2648
+margin_right = 891.526
+margin_bottom = 378.265
+rect_scale = Vector2( -1, -1 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+
+[node name="Label2" type="Label" parent="GUI/TitleScreen/Controls"]
+margin_left = 333.651
+margin_top = 177.83
+margin_right = 599.651
+margin_bottom = 222.83
+rect_scale = Vector2( -1, -1 )
+custom_colors/font_color = Color( 0.117647, 0.121569, 0.282353, 1 )
 text = "Controls"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -111,6 +157,27 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/TitleScreen/Label"]
 autoplay = "pulse"
 anims/pulse = SubResource( 1 )
+
+[node name="Panic frozen" type="Sprite" parent="GUI/TitleScreen"]
+position = Vector2( 778.124, 235.053 )
+rotation = -0.132976
+scale = Vector2( 1.73543, 1.73543 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/TitleScreen/Panic frozen"]
+autoplay = "bob"
+anims/bob = SubResource( 2 )
+
+[node name="Title" type="Label" parent="GUI/TitleScreen"]
+margin_left = 40.4543
+margin_top = 103.383
+margin_right = 388.454
+margin_bottom = 196.383
+rect_rotation = -3.61879
+rect_scale = Vector2( 1.51383, 1.51383 )
+text = "Frosty Boy's 
+Freakout!"
+align = 1
 
 [node name="ControlsScreen" type="Control" parent="GUI"]
 visible = false
@@ -195,7 +262,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Fade"]
-anims/fade = SubResource( 2 )
+anims/fade = SubResource( 3 )
 
 [connection signal="pressed" from="GUI/TitleScreen/Play" to="GUI" method="_on_Play_pressed"]
 [connection signal="pressed" from="GUI/TitleScreen/Controls" to="GUI" method="_on_Options_pressed"]
