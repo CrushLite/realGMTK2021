@@ -19,6 +19,8 @@ var is_drowned = false
 var is_landed = false # gets true the first time that we appear on a platform
 var old_rope
 
+var should_grunt = false
+
 #Used to calculate the rotation the player feels if the platform shifts underneath
 var current_major_platform = null
 var rotation_offset = 0
@@ -26,6 +28,12 @@ var rotation_offset = 0
 onready var rope_base_tscn = preload("res://Scenes/rope_anchor_base.tscn")
 
 func _physics_process(delta):
+	if should_grunt == true:
+		print("should_grunt?")
+		should_grunt = false
+		$Grunt.play()
+	
+	
 	if is_drowned: # prvent movement if we've drowned
 		return
 	
@@ -90,6 +98,8 @@ func _input(event):
 	# Throw rope
 	if Input.is_action_just_pressed("throw_rope") and target_platform \
 		and base_platform and not is_throwing:
+		should_grunt = true
+		print("Throwing")
 		is_throwing = true
 		# spawn a rope object
 		var rope_base = rope_base_tscn.instance()

@@ -5,6 +5,8 @@ extends Position2D
 signal attached
 export(NodePath) var anchor_target_path
 
+var play_clink = false
+
 func init():
 	var anchor_target : Position2D = get_node(anchor_target_path)
 	$Hook.position = anchor_target.global_position
@@ -24,6 +26,7 @@ func init():
 	
 	$rope.node_a = get_parent().get_path()
 	$rope.node_b = anchor_target.get_parent().get_path()
+	play_clink = true
 	
 	
 	
@@ -38,7 +41,6 @@ func _physics_process(delta):
 	var anchor_target = get_node_or_null(anchor_target_path)
 	var ang = $Hook.get_angle_to(self.global_position)
 	$Hook.rotate(ang - PI/2)
-	print("TESTER")
 	if anchor_target:
 		$Line2D.points[0] = Vector2(0,0)
 		$Line2D.points[1] = anchor_target.global_position - global_position
@@ -48,6 +50,11 @@ func _physics_process(delta):
 #		anchor_target.global_rotation = 0
 	else:
 		queue_free() # the anchor target is dead so we are dead
+	
+	# Deal with clink sound
+	if play_clink:
+		play_clink = false
+		$HookClink.play()
 
 
 func launch_rope():
