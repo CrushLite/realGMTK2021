@@ -14,6 +14,7 @@ To get the camera shake. Call the add_trauma(amount) from elsewhere.
 
 extends Camera2D
 
+export var x_limit = 0
 export var decay = 0.8  # How quickly the shaking stops [0, 1].
 export var max_offset = Vector2(100, 75)  # Maximum hor/ver shake in pixels.
 export var max_roll = 0.1  # Maximum rotation in radians (use sparingly).
@@ -44,6 +45,7 @@ func _process(delta):
 		if only_x:   global_position.x = get_node(target).global_position.x
 		elif only_y: global_position.y = get_node(target).global_position.y
 		else:        global_position   = get_node(target).global_position
+		global_position.x = max(global_position.x, x_limit)
 	if trauma:
 		trauma = max(trauma - decay * delta, 0)
 		shake()

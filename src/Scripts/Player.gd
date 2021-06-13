@@ -9,6 +9,7 @@ export var ACCELERATION = 1000 # Accel for both moving and stopping
 export var SLIPPERY = false    # whether the character slides a bit when changing directions
 export var screen_shake_pull = 0.3
 export var screen_shake_launch = 0.3
+export var pull_amount = 60
 
 var motion = Vector2.ZERO
 var axis = Vector2.ZERO
@@ -94,7 +95,7 @@ func _input(event):
 		var last_rope = get_node_or_null(last_thrown_rope_path)
 		if Input.is_action_just_pressed("pull_rope") and last_rope: # and not is_throwing:
 			is_pulling = true
-			last_rope.pull(60)
+			last_rope.pull(pull_amount)
 			# screenshake
 			var cam = get_tree().get_nodes_in_group("camera")[0]
 			cam.add_trauma(screen_shake_pull)

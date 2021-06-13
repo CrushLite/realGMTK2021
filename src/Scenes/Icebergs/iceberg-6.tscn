@@ -16,7 +16,7 @@ animations = [ {
 [node name="iceberg-6" instance=ExtResource( 1 )]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
-polygon = PoolVector2Array( -31.5, -82.5, -58.5, -68, -80.5, 0.5, -56, 68.5, 57.5, 70, 78, 41, 54, 20, 30.5, 5.5, 15.5, 12.5, -9.5, 11, -17, -1.5, -13.5, -50.5, -20.5, -68.5 )
+polygon = PoolVector2Array( -31.5, -82.5, -58.5, -68, -70.4516, -36.722, -80.5, 0.5, -73.1273, 34.3332, -56, 68.5, -1.4776, 73.577, 57.5, 70, 78, 41, 54, 20, 30.5, 5.5, 15.5, 12.5, -9.5, 11, -17, -1.5, -13.5, -50.5, -20.5, -68.5 )
 
 [node name="icon" parent="." index="1"]
 visible = false
@@ -27,5 +27,4 @@ visible = false
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 1
 playing = true
