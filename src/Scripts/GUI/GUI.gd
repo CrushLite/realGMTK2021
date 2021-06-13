@@ -4,7 +4,20 @@ signal play_pressed
 
 func _on_Play_pressed():
 	$TitleScreen.hide()
-	emit_signal("play_pressed")
+	$Comic.show()
+	$Comic/AnimationPlayer.play("fade in")
+
+var cnt = 0
+func _on_Comic_gui_input(event):
+	if not event is InputEventMouseButton and not event.is_pressed():
+		return
+	if $Comic/AnimationPlayer.is_playing():
+		$Comic/AnimationPlayer.seek(5.9, true)
+	else:
+		if cnt == 0:
+			cnt += 1
+			emit_signal("play_pressed")
+			$Comic.hide()
 
 
 func _on_Options_pressed():
@@ -34,3 +47,5 @@ func _on_TextureRect_gui_input(event):
 	if event:
 		$WinCard.hide()
 		$TitleScreen.show()
+
+

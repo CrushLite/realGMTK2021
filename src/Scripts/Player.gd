@@ -92,18 +92,20 @@ func _physics_process(delta):
 	set_animations(axis)
 
 func _input(event):
-	if last_thrown_rope_path:
-		var last_rope = get_node_or_null(last_thrown_rope_path)
-		if Input.is_action_just_pressed("pull_rope") and last_rope: # and not is_throwing:
-			is_pulling = true
-			last_rope.pull(pull_amount)
-			# screenshake
-			var cam = get_tree().get_nodes_in_group("camera")[0]
-			cam.add_trauma(screen_shake_pull)
-	
 	var base_platform = get_major_platform()
+	var last_rope = null
+	if last_thrown_rope_path:
+		last_rope = get_node_or_null(last_thrown_rope_path)
+	
+	#Try to pull the rope and if can't then throw
+	if Input.is_action_just_pressed("pull_rope") and last_rope: # and not is_throwing:
+		is_pulling = true
+		last_rope.pull(pull_amount)
+		# screenshake
+		var cam = get_tree().get_nodes_in_group("camera")[0]
+		cam.add_trauma(screen_shake_pull)
 	# Throw rope
-	if Input.is_action_just_pressed("throw_rope") and target_platform \
+	elif Input.is_action_just_pressed("throw_rope") and target_platform \
 		and base_platform and not is_throwing:
 		should_grunt = true
 		print("Throwing")

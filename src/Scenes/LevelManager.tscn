@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GUI/GUI.gd" type="Script" id=2]
@@ -11,6 +11,12 @@
 [ext_resource path="res://Art/button_pressed_mask.png" type="BitMap" id=9]
 [ext_resource path="res://Art/Victory_card.png" type="Texture" id=10]
 [ext_resource path="res://Other/Fonts/ARLRDBD.TTF" type="DynamicFontData" id=11]
+[ext_resource path="res://Art/comic_cut/comic2.png" type="Texture" id=12]
+[ext_resource path="res://Art/comic_cut/comic1.png" type="Texture" id=13]
+[ext_resource path="res://Art/comic_cut/comic5.png" type="Texture" id=14]
+[ext_resource path="res://Art/comicintrotransparent.png" type="Texture" id=15]
+[ext_resource path="res://Art/comic_cut/comic3.png" type="Texture" id=16]
+[ext_resource path="res://Art/comic_cut/comic4.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pulse"
@@ -72,6 +78,82 @@ tracks/0/keys = {
 size = 48
 font_data = ExtResource( 11 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "fade in"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("comic1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.287175, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("comic2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 0.287175, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("comic3:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 1, 0.287175, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("comic4:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3, 4 ),
+"transitions": PoolRealArray( 1, 0.287175, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("comic5:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4, 5 ),
+"transitions": PoolRealArray( 1, 0.287175, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Label:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 5, 6 ),
+"transitions": PoolRealArray( 1, 0.287175, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="LevelManager" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -89,6 +171,7 @@ __meta__ = {
 }
 
 [node name="gradient1" type="Sprite" parent="GUI"]
+self_modulate = Color( 0.65, 0.611, 0.611, 1 )
 position = Vector2( 530.071, 208.357 )
 scale = Vector2( 1.33712, 1.33712 )
 texture = ExtResource( 4 )
@@ -202,7 +285,7 @@ anchor_bottom = 1.0
 margin_left = 38.0
 margin_top = 27.0
 margin_right = -624.0
-margin_bottom = -300.0
+margin_bottom = -288.0
 text = "Move Up:
 Move Down:
 Move Right:
@@ -266,6 +349,18 @@ margin_bottom = 181.346
 custom_colors/font_color = Color( 0.117647, 0.121569, 0.282353, 1 )
 text = "Back"
 
+[node name="Label" type="Label" parent="GUI/ControlsScreen"]
+margin_left = 706.13
+margin_top = 347.058
+margin_right = 1092.13
+margin_bottom = 392.058
+rect_rotation = -21.6327
+rect_scale = Vector2( 0.651781, 0.651781 )
+text = "or left click!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CreditsScreen" parent="GUI" instance=ExtResource( 3 )]
 visible = false
 
@@ -283,6 +378,7 @@ __meta__ = {
 anims/fade = SubResource( 3 )
 
 [node name="WinCard" type="TextureRect" parent="GUI"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 10 )
@@ -304,8 +400,77 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Comic" type="Control" parent="GUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="comicintrotransparent" type="TextureRect" parent="GUI/Comic"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="comic1" type="TextureRect" parent="GUI/Comic"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="comic2" type="TextureRect" parent="GUI/Comic"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 12 )
+expand = true
+
+[node name="comic3" type="TextureRect" parent="GUI/Comic"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 16 )
+expand = true
+
+[node name="comic4" type="TextureRect" parent="GUI/Comic"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+expand = true
+
+[node name="comic5" type="TextureRect" parent="GUI/Comic"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Comic"]
+playback_speed = 0.5
+"anims/fade in" = SubResource( 5 )
+
+[node name="Label" type="Label" parent="GUI/Comic"]
+margin_left = 561.443
+margin_top = 533.159
+margin_right = 1074.44
+margin_bottom = 578.159
+text = "click to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="GUI/TitleScreen/Play" to="GUI" method="_on_Play_pressed"]
 [connection signal="pressed" from="GUI/TitleScreen/Controls" to="GUI" method="_on_Options_pressed"]
 [connection signal="pressed" from="GUI/ControlsScreen/Back" to="GUI" method="_on_Back_pressed"]
 [connection signal="gui_input" from="GUI/CreditsScreen" to="GUI" method="_on_CreditsScreen_gui_input"]
 [connection signal="gui_input" from="GUI/WinCard" to="GUI" method="_on_TextureRect_gui_input"]
+[connection signal="gui_input" from="GUI/Comic" to="GUI" method="_on_Comic_gui_input"]
